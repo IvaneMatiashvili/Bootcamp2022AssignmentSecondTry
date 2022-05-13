@@ -1,0 +1,44 @@
+.second-page {
+    display: flex;
+}
+
+
+.second-page .nav .first-circle {
+    opacity: 1;
+}
+
+.second-page .nav .second-circle {
+    opacity: 1;
+}
+
+.second-page .experience-generator{
+    margin-top: 8rem;
+}
+
+.second-page input {
+    margin-bottom: 2rem;
+}
+
+.second-page .add-skills {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    position: relative;
+    left: 53%;
+    padding: 0.7rem 0.8rem;
+    background-color: #FE3B1F;
+    cursor: pointer;
+    width: 47%;
+    align-items: center;
+}
+
+.second-page .add-skills p{
+    text-align: center;
+}
+
+.second-page footer {
+    margin-top: 15rem;
+}
+
+
