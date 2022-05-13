@@ -80,7 +80,7 @@ body {
     border-color: #0C0D0E;
 }
 
-.left-side input {
+.left-side input,select,textarea {
     font: 15px 'Montserrat', sans-serif;
     padding: 0.5rem;
     margin: 3rem 0;
@@ -92,7 +92,7 @@ body {
 
 }
 
-.left-side input:focus {
+.left-side input:focus,select:focus,textarea:focus {
     outline: none !important;
     border-color: #7a7f85;
     box-shadow: 0 0 6px #8d8f91;
