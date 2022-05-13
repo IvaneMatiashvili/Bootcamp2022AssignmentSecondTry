@@ -5,7 +5,7 @@
     background-image: url(/imgs/stars.png);
     background-size: cover;
     background-repeat: repeat;
-    display: block;
+    display: none;
 }
 
 .start-page header {
@@ -53,6 +53,7 @@
     font-weight: 400;
     font-size: 1.8rem;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .start-page footer {
@@ -61,12 +62,13 @@
 }
 
 .start-page img {
-    width: 25%;
+    width: 20%;
     transform: rotate(-27.28deg);
     object-fit: center;
-    padding-top: 3rem;
-    padding-right: 5rem;
     padding-bottom: 0;
     position: fixed;
+    bottom: 0rem;
+    right: 60vw;
+    left: 39vw;
     height: auto;
 }
