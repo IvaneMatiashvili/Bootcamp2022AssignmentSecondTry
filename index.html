@@ -8,6 +8,7 @@
     <title>Bootcamp2022Assignment</title>
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="/styles/start-page.css">
+    <link rel="stylesheet" href="/styles/first-page.css">
 
 <body>
     <section class="start-page">
@@ -16,7 +17,8 @@
         </header>
         <main>
             <p class="start-questionnaire">Start Questionnaire</p>
-            <a class="submitted-applications" href="submissions.html">Submitted Applications</a>
+            <a class="submitted-applications" href="submissions.html">Submitted <span
+                    class="applications">Applications</span></a>
         </main>
         <footer>
             <img src="/imgs/astronaut.png" alt="Astronaut">
@@ -24,7 +26,74 @@
     </section>
 
     <section class="first-page pages">
-
+        <section class="left-side">
+            <header>
+                <h1>Hey, Rocketeer, what are your coordinates?</h1>
+            </header>
+            <main>
+                <form autocomplete="off">
+                    <ul>
+                        <li class="input-control">
+                            <input type="text" class="first-name" name="first-name" placeholder="First name" value="">
+                        </li>
+                        <li class="input-control">
+                            <input type="text" class="last-name" name="last-name" placeholder="Last name">
+                        </li>
+                        <li class="input-control">
+                            <input type="email" class="email" name="email" placeholder="E Mail">
+                        </li>
+                        <li class="input-control">
+                            <input type="tel" class="phone" name="phone" placeholder="+995 5__ __ __ __" minlength="5">
+                        </li>
+                    </ul>
+                </form>
+            </main>
+            <footer>
+                <ul class="nav">
+                    <li>
+                        <span class="go-back"> <span class="left-arrow-container"><i class="arrow left"></i> </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="first-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="second-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="third-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="fourth-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="fifth-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="go-back"> <span class="right-arrow-container"><i class="arrow right"></i> </span>
+                        </span>
+                    </li>
+                </ul>
+            </footer>
+        </section>
+        <section class="right-side">
+            <header>
+                <h2>Redberry Origins</h2>
+            </header>
+            <main>
+                <div class="text-container">
+                    <p>
+                        You watch “What? Where? When?” Yeah. Our founders used to play it. That’s where they got a
+                        question
+                        about a famous American author and screenwriter Ray Bradbury. Albeit, our CEO Gaga Darsalia
+                        forgot
+                        the exact name and he answered Ray Redberry. And at that moment, a name for a yet to be born
+                        company
+                        was inspired - Redberry 😇
+                    </p>
+                </div>
+            </main>
+        </section>
     </section>
 </body>
 
