@@ -118,16 +118,18 @@
             <main>
                 <form>
                     <ul class="experience-generator">
-                        <li>
-                            <select name="skills" class="skills">
+                        <li class="select-box">
+                            <select name="skills" class="skills" >
+                                <option value="" disabled selected hidden>skills  <span class="go-back"> </option>
                             </select>
+                            <i class="arrow down"></i>
                         </li>
                         <li>
                             <input type="text" class="experience" name="Experience"
                                 placeholder="Experience Duration in Years" maxlength="2">
                         </li>
                         <div class="add-skills">
-                            <p> Add Programming Language </p>
+                            <p> Add Programming Language</p>
                         </div>
                     </ul>
                 </form>

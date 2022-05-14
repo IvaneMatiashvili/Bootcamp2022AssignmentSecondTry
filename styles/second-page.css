@@ -18,6 +18,41 @@
     margin-bottom: 2rem;
 }
 
+.select-box {
+    display: flex;
+    padding: 0;
+    align-items: center;
+}
+
+.second-page select {
+    background: none;
+    font: 15px 'Montserrat', sans-serif;
+    font-style: italic;
+    padding-left: 3rem;
+    color: #7a7f85;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    position: absolute;
+    width: 33rem;
+    z-index: 1;
+}
+
+.select-box .arrow {
+    border: solid #FE3B1F;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 3px;
+    position: relative;
+    left: 93%;
+}
+
+.select-box .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
 .second-page .add-skills {
     color: #FFFFFF;
     font-size: 15px;
