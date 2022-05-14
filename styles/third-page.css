@@ -1,6 +1,5 @@
 .third-page {
-    min-height: 100vh;
-    display: flex;
+    display: none;
 }
 
 .third-page .left-side {
