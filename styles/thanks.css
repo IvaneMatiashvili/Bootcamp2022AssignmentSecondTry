@@ -1,0 +1,23 @@
+.thanks {
+    height: 100vh;
+    width: 100%;
+    background-color: #0C0D0E;
+    overflow: hidden;
+    align-items: center;
+    display: block;
+}
+
+.thanks main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.thanks main h1 {
+    margin: auto;
+    font-family:'Rowdies', sans-serif;
+    color: #FE3B1F;
+    font-weight: 400;
+    font-size: 70px;
+}
