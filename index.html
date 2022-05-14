@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/start-page.css">
     <link rel="stylesheet" href="/styles/first-page.css">
     <link rel="stylesheet" href="/styles/second-page.css">
+    <link rel="stylesheet" href="/styles/third-page.css">
 
 <body>
     <section class="start-page">
@@ -119,8 +120,8 @@
                 <form>
                     <ul class="experience-generator">
                         <li class="select-box">
-                            <select name="skills" class="skills" >
-                                <option value="" disabled selected hidden>skills  <span class="go-back"> </option>
+                            <select name="skills" class="skills">
+                                <option value="" disabled selected hidden>skills <span class="go-back"> </option>
                             </select>
                             <i class="arrow down"></i>
                         </li>
@@ -173,6 +174,129 @@
                         embraced a variety of programming languages, technologies, philosophies, and frameworks. We are
                         battle-tested in PHP Laravel Stack with Vue.js, refined in React, and allies with Serverside
                         technologies like Docker and Kubernetes, and now we have set foot in the web3 industry.
+                    </p>
+                </div>
+            </main>
+        </section>
+    </section>
+
+    <section class="third-page pages">
+        <section class="left-side">
+            <header>
+                <h1>Covid Stuff</h1>
+            </header>
+            <main>
+                <form>
+                    <ul>
+                        <ul class="form-control-inline">
+
+                            <p class="third-page-question">
+                                how would you prefer to work?
+                            </p>
+                            <li class="input-control">
+                                <input type="radio" name="location" id="sairme" class="work-location sairme"
+                                    value="home">
+                                <label for="sairme">From Sairme Office</label>
+                            </li>
+
+                            <li class="input-control">
+                                <input type="radio" name="location" id="home" class="work-location" value="home">
+                                <label for="home">From Home</label>
+                            </li>
+                            <li class="input-control">
+                                <input type="radio" name="location" id="hybrid" class="work-location" value="hybrid">
+                                <label for="hybrid">Hybrid</label>
+                            </li>
+                        </ul>
+                        <ul class="form-control-inline">
+
+                            <p class="third-page-question">
+                                Did you contact covid 19? :(
+                            </p>
+                            <li class="input-control">
+                                <input type="radio" name="covid" id="covid-yes" class="covid" value="covid-yes">
+                                <label for="covid-yes">Yes</label>
+                            </li>
+
+                            <li class="input-control">
+                                <input type="radio" name="covid" id="covid-no" class="covid" value="covid-no" required>
+                                <label for="covid-no">No</label>
+                            </li>
+                        </ul>
+                        <li class="when">
+                            <p class="third-page-question">
+                                When?
+                            </p>
+                            <input type="date" id="covid-date" name="covid-date" placeholder="Date">
+                        </li>
+
+                        <ul class="form-control-inline">
+
+                            <p class="third-page-question">
+                                Have you been vaccinated?
+                            </p>
+                            <li class="input-control">
+                                <input type="radio" name="vaccinated" id="vaccinated-yes" class="vaccinated"
+                                    value="vaccinated-yes">
+                                <label for="vaccinated-yes">Yes</label>
+                            </li>
+
+                            <li class="input-control">
+                                <input type="radio" name="vaccinated" id="vaccinated-no" class="vaccinated"
+                                    value="vaccinated-no">
+                                <label for="vaccinated-no">No</label>
+                            </li>
+
+                        </ul>
+                        <li class="when">
+                            <p class="third-page-question">
+                                When did you get your last covid vaccine?
+                            </p>
+                            <input type="date" id="vaccinated-date" name="vaccinated-date" placeholder="Date">
+                        </li>
+                    </ul>
+                </form>
+            </main>
+            <footer>
+                <ul class="nav">
+                    <li>
+                        <span class="go-back"> <span class="left-arrow-container"><i class="arrow left"></i> </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="first-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="second-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="third-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="fourth-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="fifth-circle current-page"></span>
+                    </li>
+                    <li>
+                        <span class="go-back"> <span class="right-arrow-container"><i class="arrow right"></i> </span>
+                        </span>
+                    </li>
+                </ul>
+            </footer>
+        </section>
+        <section class="right-side">
+            <header>
+                <h2>Redberry Covid Policies</h2>
+            </header>
+            <main>
+                <div class="text-container">
+                    <p>
+                        As this infamous pandemic took over the world, we adjusted our working practices so that our
+                        employees can be as safe and comfortable as possible. We have a hybrid work environment, so you
+                        can either work from home or visit our lovely office on Sairme Street. If it was up to us, we
+                        would love you to see us in the office because we think face-to-face communications > Zoom
+                        meetings. Both on the fun and productivity scales.
                     </p>
                 </div>
             </main>
