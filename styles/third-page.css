@@ -1,0 +1,85 @@
+.third-page {
+    min-height: 100vh;
+    display: flex;
+}
+
+.third-page .left-side {
+    height: 160vh;
+    width: 100%;
+}
+
+.third-page .right-side {
+    height: 160vh;
+    width: 100%;
+}
+
+.third-page .form-control-inline {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.third-page .input-control {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    margin-top: -1rem;
+}
+
+.third-page-question {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+
+}
+
+.third-page label {
+    font: 15px 'Montserrat', sans-serif;
+    margin: 0;
+    margin-left: 0.5rem;
+}
+
+.third-page .form-control-inline input {
+    margin: 0;
+    padding: 0;
+}
+
+.third-page input[type=radio] {
+    width: 1rem;
+    box-shadow: none;
+}
+
+.third-page #second-radio {
+    margin-top: 5rem;
+}
+
+.third-page input[type=date] {
+    text-align: right;
+    font: 15px 'Montserrat', sans-serif;
+    font-style: italic;
+    padding-left: 2rem;
+}
+
+.third-page input[type="date"]:before {
+    content: attr(placeholder) !important;
+    margin: 0 1.5rem;
+    color: #525557;
+}
+
+.first-page input[type="date"]:focus:before {
+    content: '' !important;
+}
+
+.third-page .nav .first-circle {
+    opacity: 1;
+}
+
+.third-page .nav .second-circle {
+    opacity: 1;
+}
+
+.third-page .nav .third-circle {
+    opacity: 1;
+}
