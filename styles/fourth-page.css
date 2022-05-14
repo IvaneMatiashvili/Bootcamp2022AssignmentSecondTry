@@ -1,0 +1,117 @@
+.fourth-page {
+    display: flex;
+}
+
+.fourth-page .left-side {
+    height: 110vh;
+    width: 100%;
+}
+
+.fourth-page .right-side {
+    height: 110vh;
+    width: 100%;
+}
+
+.fourth-page main {
+    margin-top: 5rem;
+}
+
+.fourth-page main form {
+    width: 65%;
+    margin: auto auto 0 auto;
+    padding: 1rem;
+}
+
+.fourth-page .form-control-inline {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -1.9rem;
+    padding: 0;
+    align-items: center;
+}
+
+.fourth-page .form-control-inline input {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.fourth-page label {
+    font: 15px 'Montserrat', sans-serif;
+    margin: 0;
+    margin-left: 0.5rem;
+}
+
+
+.fourth-page input[type=radio] {
+    box-shadow: none;
+}
+
+.fourth-page .what {
+    margin-top: 4rem;
+}
+
+.fourth-page-question {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+
+.fourth-page input, textarea {
+    font: 15px 'Montserrat', sans-serif;
+    padding: 0.5rem;
+    margin: 2rem 0;
+    border: 1px solid #525557;
+    width: 100%;
+    height: 4rem;
+    display: block;
+    box-sizing: border-box;
+}
+
+.fourth-page textarea {
+    resize: none;
+    height: 9rem !important;
+    width: 92%;
+}
+
+.fourth-page #fo-usermessage {
+    height: 7rem !important;
+}
+
+
+.fourth-page input:placeholder-shown {
+    padding-left: 2rem;
+}
+
+.fourth-page textarea:placeholder-shown {
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+
+.fourth-page input:focus {
+    padding-left: 2rem;
+}
+
+
+.fourth-page textarea:focus {
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+
+.fourth-page .nav .first-circle {
+    opacity: 1;
+}
+
+.fourth-page .nav .second-circle {
+    opacity: 1;
+}
+
+.fourth-page .nav .third-circle {
+    opacity: 1;
+}
+
+.fourth-page .nav .fourth-circle {
+    opacity: 1;
+}
