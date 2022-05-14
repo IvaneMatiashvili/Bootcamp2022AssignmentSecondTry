@@ -1,0 +1,47 @@
+.last-page {
+    height: 100vh;
+    width: 100%;
+    background-color: #0C0D0E;
+    overflow: hidden;
+    display: block;
+}
+
+.last-page main {
+    margin: 0;
+    padding: 16rem 0;
+    align-items: center;
+    height: 100%;
+}
+
+.last-page .main-section {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    height: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+.last-page .submit {
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #FE3B1F;
+    padding: 1.4rem 7rem;
+    border-radius: 50px;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.last-page .submitions {
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
