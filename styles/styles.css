@@ -18,6 +18,13 @@
 
 @font-face {
     font-family: 'Montserrat';
+    src: url(/fonts/Montserrat-Italic.ttf) format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Montserrat';
     src: url(/fonts/Montserrat-Bold.ttf) format('truetype');
     font-weight: Bold;
 }
@@ -80,7 +87,7 @@ body {
     border-color: #0C0D0E;
 }
 
-.left-side input,select,textarea {
+.left-side input, select, textarea {
     font: 15px 'Montserrat', sans-serif;
     padding: 0.5rem;
     margin: 3rem 0;
@@ -92,20 +99,21 @@ body {
 
 }
 
-.left-side input:focus,select:focus,textarea:focus {
+.left-side input:focus, select:focus, textarea:focus {
     outline: none !important;
     border-color: #7a7f85;
     box-shadow: 0 0 6px #8d8f91;
 }
 
 .left-side input[type=text] {
-    font: 20px 'Montserrat', sans-serif;
-    padding-left: 2rem;
+    font: 15px 'Montserrat', sans-serif;
+    padding-left: 3rem;
 }
 
 .left-side input:placeholder-shown {
-    padding-left: 2rem;
-    font-size: 20px;
+    font: 15px 'Montserrat', sans-serif;
+    font-style: italic;
+    padding-left: 3rem;
 }
 
 .left-side footer {
@@ -206,7 +214,7 @@ body {
 }
 
 .right-side h2 {
-    margin: 6rem  0;
+    margin: 6rem 0;
     color: #FE3B1F;
     font-weight: 400;
     font-size: 4.5rem;

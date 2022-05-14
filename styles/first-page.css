@@ -3,12 +3,18 @@
 }
 
 .first-page input[type=email] {
-    font: 20px 'Montserrat', sans-serif;
-    padding-left: 2rem;
+    font: 15px 'Montserrat', sans-serif;
+    padding-left: 3rem;
 }
 .first-page input[type=tel] {
-    font: 20px 'Montserrat', sans-serif;
-    padding-left: 2rem;
+    font: 15px 'Montserrat', sans-serif;
+    padding-left: 3rem;
+}
+
+.first-page .left-side input:placeholder-shown {
+    font: 15px 'Montserrat', sans-serif;
+    font-style: italic;
+    padding-left: 3rem;
 }
 
 .first-page .phone {
