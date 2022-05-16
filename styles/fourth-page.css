@@ -2,16 +2,6 @@
     display: none;
 }
 
-.fourth-page .left-side {
-    height: 110vh;
-    width: 100%;
-}
-
-.fourth-page .right-side {
-    height: 110vh;
-    width: 100%;
-}
-
 .fourth-page main {
     margin-top: 5rem;
 }

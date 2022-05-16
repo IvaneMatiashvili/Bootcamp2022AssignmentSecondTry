@@ -5,7 +5,8 @@
     background-image: url(/imgs/stars.png);
     background-size: cover;
     background-repeat: repeat;
-    display: none;
+    display: block;
+    overflow: hidden;
 }
 
 .start-page header {
@@ -35,7 +36,7 @@
     color: #FFFFFF;
     text-align: center;
     width: 21%;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight: 400;
     text-decoration: none;
     background-color: #FE3B1F;
@@ -51,7 +52,7 @@
     margin: 0 auto;
     margin-top: 2rem;
     font-weight: 400;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #FFFFFF;
     cursor: pointer;
 }
@@ -66,9 +67,7 @@
     transform: rotate(-27.28deg);
     object-fit: center;
     padding-bottom: 0;
-    position: fixed;
-    bottom: 0rem;
-    right: 60vw;
-    left: 39vw;
-    height: auto;
+    position: relative;
+    padding-top: 2rem;
+    left: -1%;
 }

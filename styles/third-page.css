@@ -2,14 +2,8 @@
     display: none;
 }
 
-.third-page .left-side {
-    height: 160vh;
-    width: 100%;
-}
-
-.third-page .right-side {
-    height: 160vh;
-    width: 100%;
+.third-page .right-side h2 {
+    left: 14%; 
 }
 
 .third-page .form-control-inline {

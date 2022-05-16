@@ -1,5 +1,6 @@
 .first-page {
     display: none;
+    overflow: hidden;
 }
 
 .first-page input[type=email] {
