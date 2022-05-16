@@ -147,7 +147,7 @@ body {
     cursor: pointer;
 }
 
-.nav .go-back {
+.nav .go-back,.go-next {
     display: flex;
     border: solid 4px #FE3B1F;
     background-color: #FFFFFF;
