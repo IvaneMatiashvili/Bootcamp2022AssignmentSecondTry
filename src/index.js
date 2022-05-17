@@ -3,6 +3,7 @@ const pages = document.querySelectorAll('.pages');
 const leftSide = document.querySelector('.left-side');
 const rightSide = document.querySelector('.right-side');
 const nextArrowBtn = document.querySelectorAll('.go-next');
+const goBackArrowBtn = document.querySelectorAll('.go-back');
 
 export const pageRightSlideAnimation = (currentPageInx, selectedPageInx) => {
     let rightPageTransition = document.querySelector('.transition');
@@ -67,6 +68,13 @@ export const pageLeftSlideAnimation = (currentPageInx, selectedPageInx) => {
 nextArrowBtn.forEach((el, inx) => {
     el.addEventListener('click', () => {
         const [currentPageInx, selectedPageInx] = [inx, inx + 1];
-        pageRightSlideAnimation(el, currentPageInx, selectedPageInx);
+        pageRightSlideAnimation(currentPageInx, selectedPageInx);
+    });
+})
+
+goBackArrowBtn.forEach((el, inx) => {
+    el.addEventListener('click', () => {
+        const [currentPageInx, selectedPageInx] = [inx, inx - 1];
+        pageLeftSlideAnimation(currentPageInx, selectedPageInx);
     });
 })
