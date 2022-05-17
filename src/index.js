@@ -1,26 +1,55 @@
 const { log: l } = console;
-let rightPageTransition = document.querySelector('.transition');
 const pages = document.querySelectorAll('.pages');
 const leftSide = document.querySelector('.left-side');
 const rightSide = document.querySelector('.right-side');
 const nextArrowBtn = document.querySelectorAll('.go-next');
 
 export const pageRightSlideAnimation = (btn, currentPageInx, selectedPageInx) => {
-    rightPageTransition = pages[currentPageInx + 1];
-    pages[currentPageInx + 1].style.display = 'none';
-    if (selectedPageInx === 0) {
-        [pages[selectedPageInx + 1].style.display, rightPageTransition.style.display] = ['flex', 'block'];
-    } else if (selectedPageInx === 4) {
-        [pages[selectedPageInx + 1].style.display, rightPageTransition.style.display] = ['block', 'flex'];
-
+    let rightPageTransition = document.querySelector('.transition');
+    currentPageInx = currentPageInx + 1;
+    selectedPageInx = selectedPageInx + 1;
+    rightPageTransition = pages[currentPageInx];
+    pages[currentPageInx].style.display = 'none';
+    pages[selectedPageInx].classList.remove('left-animation');
+    pages[selectedPageInx].classList.remove('right-animation');
+    if (selectedPageInx === 1) {
+        [pages[selectedPageInx].style.display, rightPageTransition.style.display] = ['flex', 'block'];
+        [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
+    } else if (selectedPageInx === 5) {
+        [pages[selectedPageInx].style.display, rightPageTransition.style.display] = ['block', 'flex'];
+        [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
     } else {
-        [pages[selectedPageInx + 1].style.display, rightPageTransition.style.display] = ['flex', 'flex'];
+        [pages[selectedPageInx].style.display, rightPageTransition.style.display] = ['flex', 'flex'];
     }
-    [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
-    rightPageTransition.classList.add("is-active");
-    rightPageTransition.classList.add("animation");
+    rightPageTransition.classList.add('right-is-active');
+    rightPageTransition.classList.add('right-animation');
     setTimeout(() => {
-        rightPageTransition.classList.remove('is-active');
+        rightPageTransition.classList.remove('right-is-active');
+        [leftSide.style.height, rightSide.style.height] = ['100%', '100%'];
+    }, 5);
+}
+
+export const pageLeftSlideAnimation = (btn, currentPageInx, selectedPageInx) => {
+    let leftPageTransition = document.querySelector('.transition');
+    currentPageInx = currentPageInx + 1;
+    selectedPageInx = selectedPageInx + 1;
+    leftPageTransition = pages[currentPageInx];
+    pages[currentPageInx].style.display = 'none';
+    pages[selectedPageInx].classList.remove('left-animation');
+    pages[selectedPageInx].classList.remove('right-animation');
+    if (selectedPageInx === 4) {
+        [pages[selectedPageInx].style.display, leftPageTransition.style.display] = ['flex', 'block'];
+        [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
+    } else if (selectedPageInx === 0) {
+        [pages[selectedPageInx].style.display, leftPageTransition.style.display] = ['block', 'flex'];
+        [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
+    } else {
+        [pages[selectedPageInx].style.display, leftPageTransition.style.display] = ['flex', 'flex'];
+    }
+    leftPageTransition.classList.add('left-is-active');
+    leftPageTransition.classList.add('left-animation');
+    setTimeout(() => {
+        leftPageTransition.classList.remove('left-is-active');
         [leftSide.style.height, rightSide.style.height] = ['100%', '100%'];
     }, 5);
 }
