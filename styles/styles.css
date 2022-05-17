@@ -45,6 +45,20 @@ body {
     width: 100%;
 }
 
+.animation {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  bottom: 0;
+  z-index: 101;
+  transition: 0.4s ease-out;
+}
+
+.is-active {
+  left: 0px;
+}
+
 .left-side {
     width: 50%;
     height: 100%;
