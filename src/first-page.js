@@ -7,7 +7,7 @@ firstPageNavBtn.forEach((el, inx) => {
     if (inx > currentPageInx) {
         el.addEventListener('click', () => {
             const selectedPageInx = inx;
-            pageRightSlideAnimation(el, currentPageInx, selectedPageInx);
+            pageRightSlideAnimation(currentPageInx, selectedPageInx);
         });
     }
 })
