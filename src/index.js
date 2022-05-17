@@ -1,8 +1,9 @@
 const { log: l } = console;
+let rightPageTransition = document.querySelector('.transition');
 const pages = document.querySelectorAll('.pages');
 const leftSide = document.querySelector('.left-side');
 const rightSide = document.querySelector('.right-side');
-let rightPageTransition = document.querySelector('.transition');
+const nextArrowBtn = document.querySelectorAll('.go-next');
 
 export const pageRightSlideAnimation = (btn, currentPageInx, selectedPageInx) => {
     rightPageTransition = pages[currentPageInx + 1];
@@ -23,3 +24,10 @@ export const pageRightSlideAnimation = (btn, currentPageInx, selectedPageInx) =>
         [leftSide.style.height, rightSide.style.height] = ['100%', '100%'];
     }, 5);
 }
+
+nextArrowBtn.forEach((el, inx) => {
+    el.addEventListener('click', () => {
+        const [currentPageInx, selectedPageInx] = [inx, inx + 1];
+        pageRightSlideAnimation(el, currentPageInx, selectedPageInx);
+    });
+})
