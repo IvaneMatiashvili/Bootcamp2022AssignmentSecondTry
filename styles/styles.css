@@ -39,13 +39,7 @@
 body {
     display: flex;
 }
-
-.pages {
-    min-height: 100%;
-    width: 100%;
-}
-
-.animation {
+.right-animation {
   position: fixed;
   top: 0;
   left: -100%;
@@ -55,8 +49,27 @@ body {
   transition: 0.4s ease-out;
 }
 
-.is-active {
+.right-is-active {
   left: 0px;
+}
+
+.left-animation {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  bottom: 0;
+  z-index: 101;
+  transition: 0.4s ease-out;
+}
+
+.left-is-active {
+  right: 0px;
+}
+
+.pages {
+    min-height: 100%;
+    width: 100%;
 }
 
 .left-side {
@@ -174,7 +187,7 @@ body {
     margin: auto;
     align-items: center;
     position: relative;
-    left: 10%;
+    left: 8%;
 }
 
 .nav .arrow {
@@ -207,7 +220,7 @@ body {
     margin: auto;
     align-items: center;
     position: relative;
-    right: 10%;
+    right: 8%;
 }
 
 .nav .right {
