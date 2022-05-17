@@ -39,32 +39,33 @@
 body {
     display: flex;
 }
+
 .right-animation {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  bottom: 0;
-  z-index: 101;
-  transition: 0.4s ease-out;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    bottom: 0;
+    z-index: 101;
+    transition: 0.4s ease-out;
 }
 
 .right-is-active {
-  left: 0px;
+    left: 0px;
 }
 
 .left-animation {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  bottom: 0;
-  z-index: 101;
-  transition: 0.4s ease-out;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    bottom: 0;
+    z-index: 101;
+    transition: 0.4s ease-out;
 }
 
 .left-is-active {
-  right: 0px;
+    right: 0px;
 }
 
 .pages {
@@ -169,34 +170,39 @@ body {
 }
 
 .nav li {
-    margin: 0.5rem;
-    padding: 0;
+    padding: 0.1;
     cursor: pointer;
+    margin: 0.5rem;
 }
 
-.nav .go-back,.go-next {
+.nav .go-back, .go-next {
     display: flex;
-    border: solid 4px #FE3B1F;
+    border: solid 3px #FE3B1F;
     background-color: #FFFFFF;
     opacity: 1;
-    border-radius: 50px;
+    padding: 30% 55%;
+    border-radius: 2rem;
+    align-items: center;
+    position: relative;
+    bottom: 5%;
 }
 
 .nav .left-arrow-container {
     display: flex;
-    margin: auto;
-    align-items: center;
+    margin: 0;
     position: relative;
-    left: 8%;
+    right: 100%;
 }
 
 .nav .arrow {
     border: solid #FE3B1F;
-    border-width: 0px 4px 4px 0px;
+    border-width: 0px 3px 3px 0px;
     border-color: #FE3B1F;
     display: inline-block;
-    padding: 3px;
-    margin: 4px;
+    padding: 2px;
+    margin: 0;
+    position: relative;
+    right: 2px;
 }
 
 .nav .left {
@@ -204,11 +210,15 @@ body {
     -webkit-transform: rotate(135deg);
 }
 
+.first-circle {
+    margin-left: 0.5rem !important;
+}
+
 .nav .current-page {
     display: flex;
     align-items: center;
     margin: 0;
-    padding: 0.6rem 0.6rem;
+    padding: 0.4rem;
     border: solid #FE3B1F;
     border-radius: 40px;
     background-color: #FE3B1F;
@@ -217,15 +227,17 @@ body {
 
 .nav .right-arrow-container {
     display: flex;
-    margin: auto;
-    align-items: center;
     position: relative;
-    right: 8%;
+    right: 2px;
 }
 
 .nav .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+}
+
+.fifth-circle {
+    margin-right: 0rem !important;
 }
 
 .right-side {
