@@ -4,7 +4,7 @@ const firstPageNavBtn = document.querySelectorAll('.first-page-nav');
 const currentPageInx = 0;
 
 firstPageNavBtn.forEach((el, inx) => {
-    if (inx > 0) {
+    if (inx > currentPageInx) {
         el.addEventListener('click', () => {
             const selectedPageInx = inx;
             pageRightSlideAnimation(el, currentPageInx, selectedPageInx);
