@@ -5,7 +5,7 @@
     background-image: url(/imgs/stars.png);
     background-size: cover;
     background-repeat: repeat;
-    display: block;
+    display: none;
     overflow: hidden;
 }
 

@@ -3,7 +3,7 @@
     width: 100%;
     background-color: #0C0D0E;
     overflow: hidden;
-    display: none;
+    display: block;
 }
 
 .last-page main {
