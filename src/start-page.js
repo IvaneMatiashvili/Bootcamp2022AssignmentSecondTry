@@ -1,7 +1,9 @@
 import { pageRightSlideAnimation } from './index.js';
 const { log: l } = console;
-export const startBtn = document.querySelector('.start-questionnaire');
+const startBtn = document.querySelector('.start-questionnaire');
 
-startBtn.addEventListener("click", () => {
-    pageRightSlideAnimation(startBtn);
+const [currentPageInx, selectedPageInx] = [-1, 0];
+
+startBtn.addEventListener('click', () => {
+    pageRightSlideAnimation(startBtn, currentPageInx, selectedPageInx);
 });
