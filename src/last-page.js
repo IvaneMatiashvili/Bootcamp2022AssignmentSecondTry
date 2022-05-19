@@ -4,6 +4,8 @@ const goBackBtn = document.querySelector('.go-back-btn');
 
 const [currentPageInx, selectedPageInx] = [4, 3];
 
-goBackBtn.addEventListener('click', () => {
-    pageLeftSlideAnimation(currentPageInx, selectedPageInx);
-});
+(function addGoBackBtnClickEventListener(btn) {
+    btn.addEventListener('click', () => {
+        pageLeftSlideAnimation(currentPageInx, selectedPageInx);
+    });
+})(goBackBtn);
