@@ -15,6 +15,13 @@
  * This is the safest method to utilize DOM style property with ts-check in javascript.
  */
 
+
+/**
+ * 
+ * Declare variables that will be frequently used
+ * 
+ */
+
 /**
  * With this variable, we have access to every page that has a '.pages' class
  * @type {NodeListOf<HTMLElement>}
@@ -61,95 +68,113 @@ const nextArrowBtn = document.querySelectorAll('.go-next');
 const goBackArrowBtn = document.querySelectorAll('.go-back');
 
 
+/**
+ * 
+ * start adding features
+ * 
+ */
+
+
 const { log: l } = console;
 
+
 /**
- * This function provides slideshow and navigation
- * features on the pages to the right
+ * This function provides a pages slideshow and navigation features
  * 
  * @param {number} currentPageInx - The index of the current page where the navigation button is located
  * @param {number} selectedPageInx - The index of the page that the customer wants to appear
  * 
  */
 
-export const pageRightSlideAnimation = (currentPageInx, selectedPageInx) => {
+
+export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
     /**
      * With this variable, we have access to an empty div element that has a '.transition' class
      * @type {HTMLElement}
      * @property {style}
      */
 
-    let rightPageTransition = document.querySelector('.transition');
+    let PageTransitionAndNavigation = document.querySelector('.transition');
 
     currentPageInx = currentPageInx + 1;
     selectedPageInx = selectedPageInx + 1;
-    rightPageTransition = pages[currentPageInx];
-
+    
+    PageTransitionAndNavigation = pages[currentPageInx];
     pages[currentPageInx].style.display = 'none';
+    
     pages[selectedPageInx].classList.remove('left-animation');
     pages[selectedPageInx].classList.remove('right-animation');
 
-    if (selectedPageInx === 1) {
-        [pages[selectedPageInx]['style'].display, rightPageTransition.style.display] = ['flex', 'block'];
-        [leftSide['style'].height, rightSide['style'].height] = ['100vh', '100vh'];
-    } else if (selectedPageInx === 5) {
-        [pages[selectedPageInx]['style'].display, rightPageTransition['style'].display] = ['block', 'flex'];
-        [leftSide['style'].height, rightSide['style'].height] = ['100vh', '100vh'];
+
+    if (selectedPageInx > currentPageInx) {
+
+        /**
+         *If the selected page index is higher than the current page index, this means that we need to navigate right,
+         *so this "IIFE" function provides slideshow and navigation features on the pages to the right
+         */
+
+        (function pageRightSlideAnimationAndNavigation() {
+
+            switch (selectedPageInx) {
+
+                case 1:
+                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'block'];
+                    [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
+                    break;
+
+                case 5:
+                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['block', 'flex'];
+                    [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
+                    break;
+
+                default:
+                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'flex'];
+            }
+
+            PageTransitionAndNavigation.classList.add('right-is-active');
+            PageTransitionAndNavigation.classList.add('right-animation');
+        })();
+
     } else {
-        [pages[selectedPageInx]['style'].display, rightPageTransition['style'].display] = ['flex', 'flex'];
+        
+        /**
+         *in the else statement the selected page index is less than the current page index, this means that we need to navigate left,
+         *so this "IIFE" function provides slideshow and navigation features on the pages to the left
+         */
+      
+         (function PageLeftSlideAnimationAndNavigation() {
+
+            switch (selectedPageInx) {
+                case 4:
+                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'block'];
+                    [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
+                    break;
+
+                case 0:
+                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['block', 'flex'];
+                    [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
+                    break;
+
+                default:
+                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'flex'];
+                    break;
+            }
+
+            PageTransitionAndNavigation.classList.add('left-is-active');
+            PageTransitionAndNavigation.classList.add('left-animation');
+        })();
     }
 
-    rightPageTransition.classList.add('right-is-active');
-    rightPageTransition.classList.add('right-animation');
-
     setTimeout(() => {
-        rightPageTransition.classList.remove('right-is-active');
-        [leftSide['style'].height, rightSide['style'].height] = ['100%', '100%'];
+        PageTransitionAndNavigation.classList.remove('right-is-active');
+        PageTransitionAndNavigation.classList.remove('left-is-active');
+        [leftSide.style.height, rightSide.style.height] = ['100%', '100%'];
     }, 5);
 }
 
-/**
- * This function provides slideshow and navigation
- * features on the pages to the left
- * 
- * @param {number} currentPageInx - The index of the current page where the navigation button is located
- * @param {number} selectedPageInx - The index of the page that the customer wants to appear
- * 
- */
-
-export const pageLeftSlideAnimation = (currentPageInx, selectedPageInx) => {
-    let leftPageTransition = document.querySelector('.transition');
-
-    currentPageInx = currentPageInx + 1;
-    selectedPageInx = selectedPageInx + 1;
-    leftPageTransition = pages[currentPageInx];
-
-    pages[currentPageInx]['style'].display = 'none';
-    pages[selectedPageInx].classList.remove('left-animation');
-    pages[selectedPageInx].classList.remove('right-animation');
-
-    if (selectedPageInx === 4) {
-        [pages[selectedPageInx]['style'].display, leftPageTransition['style'].display] = ['flex', 'block'];
-        [leftSide['style'].height, rightSide['style'].height] = ['100vh', '100vh'];
-    } else if (selectedPageInx === 0) {
-        [pages[selectedPageInx]['style'].display, leftPageTransition['style'].display] = ['block', 'flex'];
-        [leftSide['style'].height, rightSide['style'].height] = ['100vh', '100vh'];
-    } else {
-        [pages[selectedPageInx]['style'].display, leftPageTransition['style'].display] = ['flex', 'flex'];
-    }
-
-    leftPageTransition.classList.add('left-is-active');
-    leftPageTransition.classList.add('left-animation');
-
-    setTimeout(() => {
-        leftPageTransition.classList.remove('left-is-active');
-        [leftSide['style'].height, rightSide['style'].height] = ['100%', '100%'];
-    }, 5);
-}
-
 
 /**
- * This function adds a `'click' event listener` to an arrow button and
+ * This function adds a `'click' event listener` to an arrow buttons and
  * executes a 'pageTransitionAndNavigation function' for each arrow buttons 
  * @param {NodeListOf<Element>} arrowBtn
  * 
@@ -161,10 +186,10 @@ const addEventListenerForArrowButtons = (arrowBtn) => {
         el.addEventListener('click', () => {
             if (arrowBtn === nextArrowBtn) {
                 const [currentPageInx, selectedPageInx] = [inx, inx + 1];
-                pageRightSlideAnimation(currentPageInx, selectedPageInx);
+                pageTransitionAndNavigation(currentPageInx, selectedPageInx);
             } else {
                 const [currentPageInx, selectedPageInx] = [inx, inx - 1];
-                pageLeftSlideAnimation(currentPageInx, selectedPageInx);
+                pageTransitionAndNavigation(currentPageInx, selectedPageInx);
 
             }
         });
