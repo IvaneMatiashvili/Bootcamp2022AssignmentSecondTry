@@ -1,12 +1,41 @@
+//@ts-check
 import { pageTransitionAndNavigation } from './index.js';
-const startBtn = document.querySelector('.start-questionnaire');
-const { log: l } = console;
 
+/**
+ * 
+ * Declare variables that will be frequently used
+ * 
+ */
+
+/**
+ * With this variable, we have access to the start-questionnaire 
+ * @type {HTMLElement}
+ * @property {style}
+ */
+const startBtn = document.querySelector('.start-questionnaire');
+
+/**
+ * current page index
+ * @type {Array.<number>}
+ */
 const [currentPageInx, selectedPageInx] = [-1, 0];
 
-(function addStartBtnClickEventListener(btn){
-    btn.addEventListener('click', () => {
-        pageTransitionAndNavigation(currentPageInx, selectedPageInx);
-    })
-})(startBtn);
+/**
+ * 
+ * start adding features
+ * 
+ */
+
+const { log: l } = console;
+
+(/**
+ * This "IIFE" function adds a `'click' event listener` to a start-questionnaire' button and
+ * executes a 'pageTransitionAndNavigation' function for start-questionnaire button
+ * @param {NodeListOf<Element>} startBtn
+ */
+    function addStartBtnClickEventListener(btn) {
+        btn.addEventListener('click', () => {
+            pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+        })
+    })(startBtn);
 

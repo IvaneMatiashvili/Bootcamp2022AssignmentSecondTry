@@ -26,27 +26,21 @@
  * With this variable, we have access to every page that has a '.pages' class
  * @type {NodeListOf<HTMLElement>}
  * @property {style}
- * 
  */
-
 const pages = document.querySelectorAll('.pages');
 
 /**
  * With this variable, we have access to the left side of every page that has a '.left-side' class
  * @type {HTMLElement}
  * @property {style}
- * 
  */
-
 const leftSide = document.querySelector('.left-side');
 
 /**
  * With this variable, we have access to the right side of every page that has a '.right-side' class
  * @type {HTMLElement}
  * @property {style}
- * 
  */
-
 const rightSide = document.querySelector('.right-side');
 
 /**
@@ -55,16 +49,13 @@ const rightSide = document.querySelector('.right-side');
  * @property {style}
  * 
  */
-
 const nextArrowBtn = document.querySelectorAll('.go-next');
 
 /**
  * With this variable, we have access to the left arrow buttons
  * @type {NodeListOf<HTMLElement>}
  * @property {style}
- * 
  */
-
 const goBackArrowBtn = document.querySelectorAll('.go-back');
 
 
@@ -73,7 +64,6 @@ const goBackArrowBtn = document.querySelectorAll('.go-back');
  * start adding features
  * 
  */
-
 
 const { log: l } = console;
 
@@ -85,15 +75,13 @@ const { log: l } = console;
  * @param {number} selectedPageInx - The index of the page that the customer wants to appear
  * 
  */
-
-
 export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
+    
     /**
      * With this variable, we have access to an empty div element that has a '.transition' class
      * @type {HTMLElement}
      * @property {style}
      */
-
     let PageTransitionAndNavigation = document.querySelector('.transition');
 
     currentPageInx = currentPageInx + 1;
@@ -112,7 +100,6 @@ export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => 
          *If the selected page index is higher than the current page index, this means that we need to navigate right,
          *so this "IIFE" function provides slideshow and navigation features on the pages to the right
          */
-
         (function pageRightSlideAnimationAndNavigation() {
 
             switch (selectedPageInx) {
@@ -141,7 +128,6 @@ export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => 
          *in the else statement the selected page index is less than the current page index, this means that we need to navigate left,
          *so this "IIFE" function provides slideshow and navigation features on the pages to the left
          */
-      
          (function PageLeftSlideAnimationAndNavigation() {
 
             switch (selectedPageInx) {
@@ -175,11 +161,10 @@ export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => 
 
 /**
  * This function adds a `'click' event listener` to an arrow buttons and
- * executes a 'pageTransitionAndNavigation function' for each arrow buttons 
+ * executes a 'pageTransitionAndNavigation' function for each arrow buttons 
  * @param {NodeListOf<Element>} arrowBtn
  * 
  */
-
 const addEventListenerForArrowButtons = (arrowBtn) => {
 
     arrowBtn.forEach((el, inx) => {
