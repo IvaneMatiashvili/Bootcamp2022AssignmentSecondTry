@@ -2,8 +2,10 @@
     display: none;
 }
 
-.fourth-page main {
-    margin-top: 5rem;
+
+
+.fourth-page .left-side main {
+    margin-top: 10rem;
 }
 
 .fourth-page main form {
