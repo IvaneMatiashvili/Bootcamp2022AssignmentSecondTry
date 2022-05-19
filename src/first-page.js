@@ -1,4 +1,4 @@
-import { pageRightSlideAnimation } from './index.js';
+import { pageTransitionAndNavigation } from './index.js';
 const { log: l } = console;
 const firstPageNavBtn = document.querySelectorAll('.first-page-nav');
 const currentPageInx = 0;
@@ -8,7 +8,7 @@ const currentPageInx = 0;
         if (inx > currentPageInx) {
             el.addEventListener('click', () => {
                 const selectedPageInx = inx;
-                pageRightSlideAnimation(currentPageInx, selectedPageInx);
+                pageTransitionAndNavigation(currentPageInx, selectedPageInx);
             });
         }
     })
