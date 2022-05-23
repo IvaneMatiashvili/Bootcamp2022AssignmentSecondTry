@@ -75,21 +75,33 @@ const { log: l } = console;
  * @param {number} selectedPageInx - The index of the page that the customer wants to appear
  * 
  */
-export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
-    
+const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
+
     /**
      * With this variable, we have access to an empty div element that has a '.transition' class
      * @type {HTMLElement}
      * @property {style}
      */
-    let PageTransitionAndNavigation = document.querySelector('.transition');
+    let PageTransitionAndNav = document.querySelector('.transition');
+    
+    /**
+     * 
+     * With this variable, we have access to an empty div element that has a '.selected-page-transition' class
+     * 
+     * @type {HTMLElement}
+     * @property {style}
+     * 
+     */
+    let selectedPageTransitionAndNavigation = document.querySelector('.selected-page-transition');
 
     currentPageInx = currentPageInx + 1;
     selectedPageInx = selectedPageInx + 1;
-    
-    PageTransitionAndNavigation = pages[currentPageInx];
+
+    PageTransitionAndNav = pages[currentPageInx];
     pages[currentPageInx].style.display = 'none';
-    
+
+    selectedPageTransitionAndNavigation = pages[selectedPageInx];
+
     pages[selectedPageInx].classList.remove('left-animation');
     pages[selectedPageInx].classList.remove('right-animation');
 
@@ -105,59 +117,74 @@ export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => 
             switch (selectedPageInx) {
 
                 case 1:
-                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'block'];
+                    [pages[selectedPageInx].style.display, PageTransitionAndNav.style.display] = ['flex', 'block'];
                     [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
                     break;
 
                 case 5:
-                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['block', 'flex'];
+                    [pages[selectedPageInx].style.display, PageTransitionAndNav.style.display] = ['block', 'flex'];
                     [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
                     break;
 
                 default:
-                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'flex'];
+                    [pages[selectedPageInx].style.display, PageTransitionAndNav.style.display] = ['flex', 'flex'];
             }
 
-            PageTransitionAndNavigation.classList.add('right-is-active');
-            PageTransitionAndNavigation.classList.add('right-animation');
+            PageTransitionAndNav.classList.add('right-animation');
+            PageTransitionAndNav.classList.add('right-is-active');
+
+            selectedPageTransitionAndNavigation.classList.add('selected-page-right-animation');
+            selectedPageTransitionAndNavigation.classList.add('selected-page-right-animation-is-active');
         })();
 
     } else {
-        
+
         /**
          *in the else statement the selected page index is less than the current page index, this means that we need to navigate left,
          *so this "IIFE" function provides slideshow and navigation features on the pages to the left
          */
-         (function PageLeftSlideAnimationAndNavigation() {
+        (function PageLeftSlideAnimationAndNavigation() {
 
             switch (selectedPageInx) {
                 case 4:
-                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'block'];
+                    [pages[selectedPageInx].style.display, PageTransitionAndNav.style.display] = ['flex', 'block'];
                     [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
                     break;
 
                 case 0:
-                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['block', 'flex'];
+                    [pages[selectedPageInx].style.display, PageTransitionAndNav.style.display] = ['block', 'flex'];
                     [leftSide.style.height, rightSide.style.height] = ['100vh', '100vh'];
                     break;
 
                 default:
-                    [pages[selectedPageInx].style.display, PageTransitionAndNavigation.style.display] = ['flex', 'flex'];
+                    [pages[selectedPageInx].style.display, PageTransitionAndNav.style.display] = ['flex', 'flex'];
                     break;
             }
 
-            PageTransitionAndNavigation.classList.add('left-is-active');
-            PageTransitionAndNavigation.classList.add('left-animation');
+            PageTransitionAndNav.classList.add('left-animation');
+            PageTransitionAndNav.classList.add('left-is-active');
+            
+            selectedPageTransitionAndNavigation.classList.add('selected-page-left-animation');
+            selectedPageTransitionAndNavigation.classList.add('selected-page-left-animation-is-active');
         })();
     }
 
     setTimeout(() => {
-        PageTransitionAndNavigation.classList.remove('right-is-active');
-        PageTransitionAndNavigation.classList.remove('left-is-active');
-        [leftSide.style.height, rightSide.style.height] = ['100%', '100%'];
+        PageTransitionAndNav.classList.remove('right-is-active');
+        PageTransitionAndNav.classList.remove('left-is-active');
+        selectedPageTransitionAndNavigation.classList.remove('selected-page-right-animation-is-active');
+        selectedPageTransitionAndNavigation.classList.remove('selected-page-left-animation-is-active');
     }, 5);
+
+    setTimeout(() => {
+        selectedPageTransitionAndNavigation.classList.remove('selected-page-right-animation');
+        selectedPageTransitionAndNavigation.classList.remove('selected-page-left-animation');
+        PageTransitionAndNav.style.display = 'none';
+        [leftSide.style.height, rightSide.style.height] = ['100%', '100%'];
+    }, 500);
 }
 
+export default pageTransitionAndNavigation;
 
 /**
  * This function adds a `'click' event listener` to an arrow buttons and

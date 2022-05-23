@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation } from './index.js';
+import pageTransitionAndNavigation from './index.js';
 
 /**
  * 
@@ -8,7 +8,8 @@ import { pageTransitionAndNavigation } from './index.js';
  */
 
 /**
- * With this variable, we have access to the first page navigation buttons
+ * With this variable, we have access to the first page navigation buttons.
+ * 
  * @type {NodeListOf<HTMLElement>}
  * @property {style}
  */
@@ -17,6 +18,7 @@ const firstPageNavBtn = document.querySelectorAll('.first-page-nav');
 
 /**
  * current page index
+ * 
  * @type {number}
  */
 const currentPageInx = 0;
@@ -33,7 +35,7 @@ const { log: l } = console;
 (/**
  * This "IIFE" function adds a `'click' event listener` to a first page navigation buttons and
  * executes a 'pageTransitionAndNavigation' function for each first page navigation buttons 
- * @param {NodeListOf<Element>} firstPageNavBtn
+ * @param {NodeListOf<Element>} btn
  */
     function addFirstPageNavBtnClickEventListener(btn) {
         btn.forEach((el, inx) => {

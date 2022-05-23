@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation } from './index.js';
+import pageTransitionAndNavigation from './index.js';
 
 /**
  * 
@@ -31,7 +31,7 @@ const { log: l } = console;
 (/**
  * This "IIFE" function adds a `'click' event listener` to a start-questionnaire' button and
  * executes a 'pageTransitionAndNavigation' function for start-questionnaire button
- * @param {NodeListOf<Element>} startBtn
+ * @param {HTMLElement} btn
  */
     function addStartBtnClickEventListener(btn) {
         btn.addEventListener('click', () => {

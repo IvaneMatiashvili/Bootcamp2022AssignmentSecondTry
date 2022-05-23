@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation } from './index.js';
+import pageTransitionAndNavigation from './index.js';
 
 /**
  * 
@@ -31,7 +31,7 @@ const { log: l } = console;
 (/**
  * This "IIFE" function adds a `'click' event listener` to a go-back button and
  * executes a 'pageTransitionAndNavigation' function for go-back button
- * @param {NodeListOf<Element>} goBackBtn
+ * @param {Element} btn
  */
     function addGoBackBtnClickEventListener(btn) {
         btn.addEventListener('click', () => {

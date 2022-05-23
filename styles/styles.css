@@ -40,6 +40,34 @@ body {
     display: flex;
 }
 
+.selected-page-right-animation {
+    position: fixed;
+    top: 0;
+    right: 0%;
+    width: 100%;
+    bottom: 0;
+    z-index: 101;
+    transition: 0.5s ease-out;
+}
+
+.selected-page-right-animation-is-active {
+    right: -100%;
+}
+
+.selected-page-left-animation {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    bottom: 0;
+    z-index: 101;
+    transition: 0.5s ease-out;
+}
+
+.selected-page-left-animation-is-active {
+    left: -100%;
+}
+
 .right-animation {
     position: fixed;
     top: 0;
@@ -47,7 +75,7 @@ body {
     width: 100%;
     bottom: 0;
     z-index: 101;
-    transition: 0.4s ease-out;
+    transition: 0.5s ease-out;
 }
 
 .right-is-active {
@@ -61,7 +89,7 @@ body {
     width: 100%;
     bottom: 0;
     z-index: 101;
-    transition: 0.4s ease-out;
+    transition: 0.5s ease-out;
 }
 
 .left-is-active {

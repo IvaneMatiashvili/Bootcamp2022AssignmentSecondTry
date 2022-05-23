@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation } from './index.js';
+import pageTransitionAndNavigation from './index.js';
 
 /**
  * 
@@ -31,7 +31,7 @@ const { log: l } = console;
 (/**
  * This "IIFE" function adds a `'click' event listener` to a third page navigation buttons and
  * executes a 'pageTransitionAndNavigation' function for each third page navigation buttons 
- * @param {NodeListOf<Element>} thirdPageNavBtn
+ * @param {NodeListOf<Element>} btn
  */
     function addThirdPageNavBtnClickEventListener(btn) {
         btn.forEach((el, inx) => {

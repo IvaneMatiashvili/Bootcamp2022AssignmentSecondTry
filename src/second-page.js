@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation } from './index.js';
+import pageTransitionAndNavigation from './index.js';
 
 /**
  * 
@@ -32,7 +32,7 @@ const { log: l } = console;
 (/**
  * This "IIFE" function adds a `'click' event listener` to a second page navigation buttons and
  * executes a 'pageTransitionAndNavigation' function for each second page navigation buttons 
- * @param {NodeListOf<Element>} secondPageNavBtn
+ * @param {NodeListOf<Element>} btn
  */
     function addSecondPageNavBtnClickEventListener(btn) {
         btn.forEach((el, inx) => {
