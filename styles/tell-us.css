@@ -32,7 +32,6 @@
     margin-left: 0.5rem;
 }
 
-
 .fourth-page input[type=radio] {
     box-shadow: none;
 }
@@ -47,7 +46,6 @@
     text-align: left;
     margin-bottom: 2rem;
 }
-
 
 .fourth-page input, textarea {
     font: 15px 'Montserrat', sans-serif;
@@ -66,10 +64,9 @@
     width: 92%;
 }
 
-.fourth-page #fo-usermessage {
+.fourth-page #tell-us-user-message {
     height: 7rem !important;
 }
-
 
 .fourth-page input:placeholder-shown {
     padding-left: 2rem;
@@ -83,7 +80,6 @@
 .fourth-page input:focus {
     padding-left: 2rem;
 }
-
 
 .fourth-page textarea:focus {
     padding-left: 2rem;
