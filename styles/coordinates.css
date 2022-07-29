@@ -1,5 +1,5 @@
 .first-page {
-    display: none;
+    display: flex;
     overflow: hidden;
 }
 

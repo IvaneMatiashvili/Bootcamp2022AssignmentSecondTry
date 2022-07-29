@@ -16,35 +16,42 @@
  */
 
 
-/**
- * 
- * Declare variables that will be frequently used
- * 
- */
+// Declare variables that will be frequently used
 
 /**
- * With this variable, we have access to every page that has a '.pages' class
+ * 
+ * With this variable, we have access to every page that has a '.pages' class.
+ * 
  * @type {NodeListOf<HTMLElement>}
  * @property {style}
+ * 
  */
 const pages = document.querySelectorAll('.pages');
 
 /**
- * With this variable, we have access to the left side of every page that has a '.left-side' class
- * @type {HTMLElement}
+ * 
+ * With this variable, we have access to the left side of every page that has a '.left-side' class.
+ * 
+ * @type {object}
  * @property {style}
+ * 
  */
 const leftSide = document.querySelector('.left-side');
 
 /**
- * With this variable, we have access to the right side of every page that has a '.right-side' class
+ * 
+ * With this variable, we have access to the right side of every page that has a '.right-side' class.
+ * 
  * @type {HTMLElement}
  * @property {style}
+ * 
  */
 const rightSide = document.querySelector('.right-side');
 
 /**
- * With this variable, we have access to the right arrow buttons
+ * 
+ * With this variable, we have access to the right arrow buttons.
+ * 
  * @type {NodeListOf<HTMLElement>}
  * @property {style}
  * 
@@ -52,24 +59,24 @@ const rightSide = document.querySelector('.right-side');
 const nextArrowBtn = document.querySelectorAll('.go-next');
 
 /**
- * With this variable, we have access to the left arrow buttons
+ * 
+ * With this variable, we have access to the left arrow buttons.
+ * 
  * @type {NodeListOf<HTMLElement>}
  * @property {style}
+ * 
  */
 const goBackArrowBtn = document.querySelectorAll('.go-back');
 
 
-/**
- * 
- * start adding features
- * 
- */
+// start adding features
 
 const { log: l } = console;
 
 
 /**
- * This function provides a pages slideshow and navigation features
+ * 
+ * This function provides a pages slideshow and navigation features.
  * 
  * @param {number} currentPageInx - The index of the current page where the navigation button is located
  * @param {number} selectedPageInx - The index of the page that the customer wants to appear
@@ -78,15 +85,18 @@ const { log: l } = console;
 const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
 
     /**
-     * With this variable, we have access to an empty div element that has a '.transition' class
+     * 
+     * With this variable, we have access to an empty div element that has a '.transition' class.
+     * 
      * @type {HTMLElement}
      * @property {style}
+     * 
      */
     let PageTransitionAndNav = document.querySelector('.transition');
-    
+
     /**
      * 
-     * With this variable, we have access to an empty div element that has a '.selected-page-transition' class
+     * With this variable, we have access to an empty div element that has a '.selected-page-transition' class.
      * 
      * @type {HTMLElement}
      * @property {style}
@@ -109,8 +119,10 @@ const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
     if (selectedPageInx > currentPageInx) {
 
         /**
+         * 
          *If the selected page index is higher than the current page index, this means that we need to navigate right,
-         *so this "IIFE" function provides slideshow and navigation features on the pages to the right
+         *so this "IIFE" function provides slideshow and navigation features on the pages to the right.
+         *
          */
         (function pageRightSlideAnimationAndNavigation() {
 
@@ -140,8 +152,10 @@ const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
     } else {
 
         /**
+         * 
          *in the else statement the selected page index is less than the current page index, this means that we need to navigate left,
-         *so this "IIFE" function provides slideshow and navigation features on the pages to the left
+         *so this "IIFE" function provides slideshow and navigation features on the pages to the left.
+         *
          */
         (function PageLeftSlideAnimationAndNavigation() {
 
@@ -163,7 +177,7 @@ const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
 
             PageTransitionAndNav.classList.add('left-animation');
             PageTransitionAndNav.classList.add('left-is-active');
-            
+
             selectedPageTransitionAndNavigation.classList.add('selected-page-left-animation');
             selectedPageTransitionAndNavigation.classList.add('selected-page-left-animation-is-active');
         })();
@@ -187,8 +201,10 @@ const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
 export default pageTransitionAndNavigation;
 
 /**
+ * 
  * This function adds a `'click' event listener` to an arrow buttons and
- * executes a 'pageTransitionAndNavigation' function for each arrow buttons 
+ * executes a 'pageTransitionAndNavigation' function for each arrow buttons.
+ * 
  * @param {NodeListOf<Element>} arrowBtn
  * 
  */

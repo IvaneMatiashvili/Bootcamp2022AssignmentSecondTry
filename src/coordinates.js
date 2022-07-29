@@ -7,6 +7,12 @@ import pageTransitionAndNavigation from './index.js';
  * 
  */
 
+const firstName = document.querySelector('.first-name');
+const lastName = document.querySelector('.last-name');
+const email = document.querySelector('.email');
+const phone = document.querySelector('.phone');
+
+
 /**
  * With this variable, we have access to the first page navigation buttons.
  * 
@@ -31,6 +37,10 @@ const currentPageInx = 0;
 
 const { log: l } = console;
 
+
+let firstNameValue = firstName.value.trim();
+
+l(firstNameValue);
 
 (/**
  * This "IIFE" function adds a `'click' event listener` to a first page navigation buttons and

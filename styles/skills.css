@@ -18,6 +18,17 @@
     margin-bottom: 2rem;
 }
 
+.second-page input:placeholder-shown {
+    padding-left: 4rem;
+}
+
+.second-page input:focus,input[type=text] {
+    padding-left: 4rem;
+}
+
+.second-page input[type=text] {
+    padding-left: 4rem;
+}
 .select-box {
     display: flex;
     padding: 0;
@@ -29,7 +40,7 @@
     font: 15px 'Montserrat', sans-serif;
     font-style: italic;
     padding-left: 3rem;
-    color: #7a7f85;
+    color: #080808;;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -37,6 +48,8 @@
     position: absolute;
     width: 33rem;
     z-index: 1;
+    cursor: pointer;
+    padding-left: 4rem;
 }
 
 .select-box .arrow {
@@ -46,11 +59,13 @@
     padding: 3px;
     position: relative;
     left: 93%;
+    cursor: pointer;
 }
 
 .select-box .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+    cursor: pointer;
 }
 
 .second-page .add-skills {
@@ -69,6 +84,54 @@
 
 .second-page .add-skills p {
     text-align: center;
+}
+
+.second-page .skills-experience {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem auto;
+    border: 1px solid #525557;
+    padding: 18px 0;
+    margin-bottom: 0;
+    gap: 1rem;
+}
+
+.second-page .skills-experience p {
+    font: 1rem 'Montserrat', sans-serif;
+    font-style: italic;
+}
+
+.second-page .language-container {
+    width: 2rem;
+    margin-left: 2rem;
+}
+
+.second-page .skills-experience .years-of-experience {
+    margin: 0;
+    margin-left: 1rem;
+    font-style: italic;
+    color: #080808;
+    text-align: center;
+}
+
+.second-page .skills-experience .remove-btn-circle {
+    margin-left: 5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    border: 2px solid #FE3B1F;
+    border-radius: 48px;
+    padding: 8px 3px;
+}
+
+.second-page .skills-experience .remove-language-btn {
+    cursor: pointer;
+    border: 1.4px solid #FE3B1F;
+    display: block;
+    border-radius: 1px;
+    background-color: #FE3B1F;
+    width: 14px;
 }
 
 .second-page footer {
