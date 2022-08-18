@@ -1,5 +1,5 @@
 //@ts-check
-import pageTransitionAndNavigation from './index.js';
+import { pageTransitionAndNavigation, validator } from './index.js';
 
 // Declare variables that will be frequently used
 
@@ -8,9 +8,11 @@ import pageTransitionAndNavigation from './index.js';
  */
 
 const experienceGenerator = document.querySelector('.experience-generator');
+const skillsMassage = document.querySelector('.skills-message');
 const skills = document.querySelector('.skills');
 const experience = document.querySelector('.experience');
 const addSkillsBtn = document.querySelector('.add-skills');
+let localStorageSelectArr = new Array();
 
 /**
  * 
@@ -75,11 +77,21 @@ async function getSkillsData() {
         skills.appendChild(option);
     })
 
+
+    if (JSON.parse(localStorage.getItem('select'))) {
+        if (JSON.parse(localStorage.getItem('select')).length > 0) {
+            skills.value = JSON.parse(localStorage.getItem('select'))[JSON.parse(localStorage.getItem('select')).length - 1].element;
+        }
+    }
+
+
 }
 getSkillsData();
 
 
 let skillsList = new Array();
+let languageInformation = new Object();
+
 
 const addSkills = () => {
 
@@ -91,8 +103,11 @@ const addSkills = () => {
     let language = document.createElement('p');
     languageContainer.appendChild(language);
 
+    let experienceContainer = document.createElement('div');
+
     let yearsOfExperience = document.createElement('p');
     yearsOfExperience.classList.add('years-of-experience');
+    experienceContainer.appendChild(yearsOfExperience);
 
     let removeBtnCircle = document.createElement('div');
     removeBtnCircle.classList.add('remove-btn-circle');
@@ -104,27 +119,59 @@ const addSkills = () => {
 
     language.textContent = skills.value.trim();
 
+    let LocalStorageSelect = JSON.parse(localStorage.getItem('select'));
+
+    if (language.textContent.length < 1 && LocalStorageSelect.length > 0) {
+
+        language.textContent = languageInformation.element;
+        skills.value = language.textContent;
+        experience.value = languageInformation.experience;
+    }
+
     let forEachResult = 0;
 
     skillsList?.forEach(el => {
         if (el === language.textContent) forEachResult = 1;
     })
 
-    if (forEachResult !== 1) {
+    if (forEachResult !== 1 && language.textContent !== '') {
 
         skillsList.push(language.textContent);
+        skillsPageValidator();
 
-        yearsOfExperience.textContent = `Years of Experience: ${experience.value.trim()}`;;
+        yearsOfExperience.textContent = `Years of Experience: ${experience.value.trim()}`;
         informationAboutExperience.classList.add('skills-experience');
 
+        let localStorageArrElement = {
+            element: language.textContent,
+            experience: experience?.value.trim()
+        };
+
+        if (language.textContent?.length > 0) {
+
+            localStorageSelectArr.push(localStorageArrElement);
+
+            localStorage.setItem('select', JSON.stringify(localStorageSelectArr));
+            JSON.parse(localStorage.getItem('select'));
+        }
+
         informationAboutExperience.appendChild(languageContainer);
-        informationAboutExperience.appendChild(yearsOfExperience);
+        informationAboutExperience.appendChild(experienceContainer);
         informationAboutExperience.appendChild(removeBtnCircle);
 
         experienceGenerator.appendChild(informationAboutExperience);
 
         removeLanguage(removeBtnCircle, informationAboutExperience, language.textContent);
 
+    } else {
+        skillsList?.forEach((el, idx) => {
+            if (el === language.textContent) {
+                experienceGenerator.children[idx + 3].style.backgroundColor = '#c9c9c9';
+                setTimeout(() => {
+                    experienceGenerator.children[idx + 3].style.backgroundColor = '#FFFFFF';
+                }, 300)
+            }
+        })
     }
 }
 
@@ -132,7 +179,34 @@ const removeLanguage = (removeBtn, languageAndExperience, language) => {
     removeBtn.addEventListener('click', () => {
         languageAndExperience.remove();
         skillsList = skillsList.filter(el => el !== language);
+
+        let localStorageArr = JSON.parse(localStorage.getItem('select'));
+        localStorageArr = localStorageArr.filter(elm => elm.element !== language);
+        localStorage.setItem('select', JSON.stringify(localStorageArr));
+        skillsPageValidator();
     })
 }
+
+const skillsPageValidator = () => {
+    let skillsValue;
+    skillsList.length === 0 ? skillsValue = "" : skillsValue = "At list one skill";
+    let index = 4;
+    validator(skillsValue, skills, index, 'skill');
+    validator(skillsValue, experience, index, 'experience');
+}
+
+skillsPageValidator();
+
+const addSkillsFromLocalStorage = (languageInfo) => {
+    languageInformation = languageInfo;
+}
+
+let getLocalStorageSelect = JSON.parse(localStorage.getItem('select'));
+
+getLocalStorageSelect?.forEach(el => {
+    addSkillsFromLocalStorage(el);
+
+    addSkills();
+})
 
 addSkillsBtn.addEventListener('click', addSkills);

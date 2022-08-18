@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootcamp 2022 Assignment</title>
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/start-questionnaire.css">
-    <link rel="stylesheet" href="/styles/coordinates.css">
-    <link rel="stylesheet" href="/styles/skills.css">
-    <link rel="stylesheet" href="/styles/covid-stuff.css">
-    <link rel="stylesheet" href="/styles/tell-us.css">
-    <link rel="stylesheet" href="/styles/submit.css">
-    <link rel="stylesheet" href="/styles/thanks.css">
-    <script type="module" src="/src/index.js" defer></script>
-    <script type="module" src="/src/start-questionnaire.js" defer></script>
-    <script type="module" src="/src/coordinates.js" defer></script>
-    <script type="module" src="/src/skills.js" defer></script>
-    <script type="module" src="/src/covid-stuff.js" defer></script>
-    <script type="module" src="/src/tell-us.js" defer></script>
-    <script type="module" src="/src/submit.js" defer></script>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/start-questionnaire.css">
+    <link rel="stylesheet" href="./styles/coordinates.css">
+    <link rel="stylesheet" href="./styles/skills.css">
+    <link rel="stylesheet" href="./styles/covid-stuff.css">
+    <link rel="stylesheet" href="./styles/tell-us.css">
+    <link rel="stylesheet" href="./styles/submit.css">
+    <link rel="stylesheet" href="./styles/thanks.css">
+    <script type="module" src="./src/index.js" defer></script>
+    <script type="module" src="./src/start-questionnaire.js" defer></script>
+    <script type="module" src="./src/coordinates.js" defer></script>
+    <script type="module" src="./src/skills.js" defer></script>
+    <script type="module" src="./src/covid-stuff.js" defer></script>
+    <script type="module" src="./src/tell-us.js" defer></script>
+    <script type="module" src="./src/submit.js" defer></script>
 
 <body>
     <div class="transition animation"></div>
@@ -35,7 +35,7 @@
                     class="applications">Applications</span></a>
         </main>
         <footer>
-            <img src="/imgs/astronaut.png" alt="Astronaut">
+            <img src="./imgs/astronaut.png" alt="Astronaut">
         </footer>
     </section>
     <section class="first-page pages">
@@ -47,16 +47,33 @@
                 <form>
                     <ul>
                         <li class="input-control">
-                            <input type="text" class="first-name" name="first-name" placeholder="First name" value="">
+                            <input type="text" class="first-name error" name="first-name" placeholder="First name"
+                                value="">
+                            <div class="first-error validation-error">Username is required</div>
+                            <div class="second-error validation-error">Please lengthen this text to 2 characters or more
+                            </div>
                         </li>
                         <li class="input-control">
-                            <input type="text" class="last-name" name="last-name" placeholder="Last name">
+                            <input type="text" class="last-name error" name="last-name" placeholder="Last name"
+                                value="">
+                            <div class="first-error validation-error">Last name is required</div>
+                            <div class="second-error validation-error">Please lengthen this text to 2 characters or more
+                            </div>
                         </li>
                         <li class="input-control">
-                            <input type="email" class="email" name="email" placeholder="E Mail">
+                            <input type="email" class="email error" name="email" placeholder="E Mail" value="">
+                            <div class="first-error validation-error">
+                                Email is required
+                            </div>
+                            <div class="second-error validation-error">
+                                Provide a valid email address
+                            </div>
                         </li>
                         <li class="input-control">
-                            <input type="tel" class="phone" name="phone" placeholder="+995 5__ __ __ __" minlength="5">
+                            <input type="tel" class="phone error" name="phone" placeholder="+995 5__ __ __ __"
+                                minlength="5" value="">
+                            <div class="first-error validation-error">Phone number is required</div>
+                            <div class="second-error validation-error">Invalid phone number</div>
                         </li>
                     </ul>
                 </form>
@@ -117,7 +134,7 @@
             <main>
                 <form>
                     <ul class="experience-generator">
-                        <li class="select-box">
+                        <li class="select-box input-control">
                             <select name="skills" class="skills">
                                 <option value="" disabled selected hidden>skills <span class="go-back"> </option>
                             </select>
@@ -126,6 +143,8 @@
                         <li>
                             <input type="text" class="experience" name="Experience"
                                 placeholder="Experience Duration in Years" maxlength="2">
+                            <div class="first-error validation-error skills-error">
+                                Please add at least one language</div>
                         </li>
                         <div class="add-skills">
                             <p> Add Programming Language</p>
@@ -185,73 +204,87 @@
             </header>
             <main>
                 <form>
-                    <ul>
-                        <ul class="form-control-inline">
+                    <ul class="questions-list">
+                        <ul class="form-control-inline work-location-form add-border">
 
                             <p class="third-page-question">
                                 how would you prefer to work?
                             </p>
                             <li class="input-control">
                                 <input type="radio" name="location" id="sairme" class="work-location sairme"
-                                    value="home">
+                                    value="from_office">
                                 <label for="sairme">From Sairme Office</label>
                             </li>
 
                             <li class="input-control">
-                                <input type="radio" name="location" id="home" class="work-location" value="home">
-                                <label for="home">From Home</label>
+                                <input type="radio" name="location" id="home" class="work-location" value="from_home">
+                                <label for="home">From Home Office</label>
                             </li>
                             <li class="input-control">
                                 <input type="radio" name="location" id="hybrid" class="work-location" value="hybrid">
                                 <label for="hybrid">Hybrid</label>
                             </li>
                         </ul>
-                        <ul class="form-control-inline">
+
+                        <div class="first-error validation-error input-radio-error">
+                            Answer is required
+                        </div>
+
+                        <ul class="form-control-inline covid-form add-border">
 
                             <p class="third-page-question">
                                 Did you contact covid 19? :(
                             </p>
                             <li class="input-control">
-                                <input type="radio" name="covid" id="covid-yes" class="covid" value="covid-yes">
+                                <input type="radio" name="covid" id="covid-yes" class="covid" value="YES">
                                 <label for="covid-yes">Yes</label>
                             </li>
 
                             <li class="input-control">
-                                <input type="radio" name="covid" id="covid-no" class="covid" value="covid-no" required>
+                                <input type="radio" name="covid" id="covid-no" class="covid" value="NO">
                                 <label for="covid-no">No</label>
                             </li>
                         </ul>
+                        <div class="first-error validation-error input-radio-error">
+                            Answer is required
+                        </div>
                         <li class="when">
                             <p class="third-page-question">
                                 When?
                             </p>
-                            <input type="date" id="covid-date" name="covid-date" placeholder="Date">
+                            <input type="text" class="covid-date error" name="covid-date" placeholder="Date"
+                                onfocus="(this.type='date', this.showPicker())" onblur="this.type='text'">
                         </li>
 
-                        <ul class="form-control-inline">
+                        <div class="first-error validation-error valid-date">Enter a valid date</div>
+                        <ul class="form-control-inline vaccinate-form add-border">
 
                             <p class="third-page-question">
                                 Have you been vaccinated?
                             </p>
                             <li class="input-control">
                                 <input type="radio" name="vaccinated" id="vaccinated-yes" class="vaccinated"
-                                    value="vaccinated-yes">
+                                    value="YES">
                                 <label for="vaccinated-yes">Yes</label>
                             </li>
 
                             <li class="input-control">
-                                <input type="radio" name="vaccinated" id="vaccinated-no" class="vaccinated"
-                                    value="vaccinated-no">
+                                <input type="radio" name="vaccinated" id="vaccinated-no" class="vaccinated" value="NO">
                                 <label for="vaccinated-no">No</label>
                             </li>
 
                         </ul>
+                        <div class="first-error validation-error input-radio-error">
+                            Answer is required
+                        </div>
                         <li class="when">
                             <p class="third-page-question">
                                 When did you get your last covid vaccine?
                             </p>
-                            <input type="date" id="vaccinated-date" name="vaccinated-date" placeholder="Date">
+                            <input type="text" class="vaccinated-date error" name="vaccinated-date" placeholder="Date"
+                                onfocus="(this.type='date', this.showPicker())" onblur="this.type='text'">
                         </li>
+                        <div class="first-error validation-error valid-date">Enter a valid date</div>
                     </ul>
                 </form>
             </main>
@@ -310,33 +343,47 @@
                 <form>
                     <ul>
                         <li>
-                            <ul>
+                            <ul class="devtalks-form add-border">
                                 <p class="fourth-page-question">Would you attend Devtalks and maybe also organize your
                                     own?
                                 </p>
                                 <li class="form-control-inline">
-                                    <input type="radio" name="verify" class="devtalk" id="yes" value="text-message">
+                                    <input type="radio" name="verify" class="devtalk" id="yes" value="YES">
                                     <label for="yes">
                                         Yes
                                     </label>
                                 </li>
                                 <li class="form-control-inline">
-                                    <input type="radio" name="verify" class="devtalk" id="no" value="text-message">
+                                    <input type="radio" name="verify" class="devtalk" id="no" value="NO">
                                     <label for="no" class="no">
                                         NO
                                     </label>
                                 </li>
                             </ul>
+                            <div class="first-error validation-error input-radio-error">
+                                Answer is required
+                            </div>
                         </li>
-                        <li class="what">
+                        <li class="what speak-about-devtalks">
                             <p class="fourth-page-question"> What would you speak about at Devtalk?</p>
-                            <textarea id="usermessage-devtalk" name="user-message" rows="5"
-                                placeholder="I would..."></textarea>
+                            <textarea id="usermessage-devtalk" class="user-message-about-devtalks error textarea-blur"
+                                name="user-message" rows="5" placeholder="I would..."></textarea>
                         </li>
+
+                        <div class="first-error validation-error user-message-error">
+                            Answer is required
+                        </div>
+
                         <li class="what">
                             <p class="fourth-page-question"> Tell us something special</p>
-                            <textarea id="tell-us-user-message" name="user-message" rows="5" placeholder="I..."></textarea>
+                            <textarea id="tell-us-user-message" class="tell-us-something error textarea-blur"
+                                name="user-message" rows="5" placeholder="I..."></textarea>
                         </li>
+                        
+                        <div class="first-error validation-error user-message-error">
+                            Answer is required
+                        </div>
+                    </ul>
                 </form>
             </main>
             <footer>

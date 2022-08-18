@@ -16,6 +16,7 @@
  */
 
 
+
 // Declare variables that will be frequently used
 
 /**
@@ -68,6 +69,10 @@ const nextArrowBtn = document.querySelectorAll('.go-next');
  */
 const goBackArrowBtn = document.querySelectorAll('.go-back');
 
+const validationError = document.querySelectorAll('.validation-error');
+const firstError = document.querySelectorAll('.first-error');
+const secondError = document.querySelectorAll('.second-error');
+
 
 // start adding features
 
@@ -82,7 +87,7 @@ const { log: l } = console;
  * @param {number} selectedPageInx - The index of the page that the customer wants to appear
  * 
  */
-const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
+export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
 
     /**
      * 
@@ -198,7 +203,6 @@ const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => {
     }, 500);
 }
 
-export default pageTransitionAndNavigation;
 
 /**
  * 
@@ -226,3 +230,106 @@ const addEventListenerForArrowButtons = (arrowBtn) => {
 
 addEventListenerForArrowButtons(nextArrowBtn);
 addEventListenerForArrowButtons(goBackArrowBtn);
+
+
+export const validator = (textValue, element, idx, elementType) => {
+    switch (elementType) {
+        case 'name':
+            if (textValue.length < 1) {
+
+                firstError[idx].style.display = 'block';
+                secondError[idx].style.display = 'none';
+
+                element.classList.add('error');
+
+            } else if (textValue.length === 1) {
+                firstError[idx].style.display = 'none';
+                secondError[idx].style.display = 'block';
+
+                element.classList.add('error');
+
+            } else {
+                firstError[idx].style.display = 'none';
+                secondError[idx].style.display = 'none';
+
+                element.classList.remove('error');
+            }
+            break;
+
+        case 'email':
+            if (textValue === '') {
+                firstError[idx].style.display = 'block';
+                secondError[idx].style.display = 'none';
+
+                element.classList.add('error');
+            } else if (!emailValidator(textValue)) {
+                firstError[idx].style.display = 'none';
+                secondError[idx].style.display = 'block';
+
+                element.classList.add('error');
+            } else {
+                firstError[idx].style.display = 'none';
+                secondError[idx].style.display = 'none';
+
+                element.classList.remove('error');
+            }
+            break;
+
+        case 'phone':
+            if (textValue === '') {
+                firstError[idx].style.display = 'block';
+                secondError[idx].style.display = 'none';
+
+                element.classList.add('error');
+            } else if (!phoneValidator(textValue)) {
+                firstError[idx].style.display = 'none';
+                secondError[idx].style.display = 'block';
+
+                element.classList.add('error');
+            } else {
+                firstError[idx].style.display = 'none';
+                secondError[idx].style.display = 'none';
+
+                element.classList.remove('error');
+            }
+
+            break;
+
+        case 'date':
+            if (textValue.length < 10) {
+
+                firstError[idx].style.display = 'block';
+                element.classList.add('error');
+
+            } else {
+                firstError[idx].style.display = 'none';
+                element.classList.remove('error');
+            }
+            break;
+
+        default:
+            if (textValue === '') {
+                firstError[idx].style.display = 'block';
+                element.classList.add('error');
+            } else {
+                firstError[idx].style.display = 'none';
+                element.classList.remove('error');
+            }
+    }
+}
+
+
+const emailValidator = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+const phoneValidator = (phone) => {
+    if (phone.slice(0, 5) === "+9955" &&
+        phone.length === 13 && !isNaN(+phone.substring(1))) {
+        return true;
+    } else {
+        return false;
+    }
+}
+

@@ -68,6 +68,10 @@
     height: 7rem !important;
 }
 
+.fourth-page .user-message-error {
+    padding-top: 0.3rem;
+}
+
 .fourth-page input:placeholder-shown {
     padding-left: 2rem;
 }
@@ -82,6 +86,11 @@
 }
 
 .fourth-page textarea:focus {
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+
+.fourth-page textarea:focus-visible {
     padding-left: 2rem;
     padding-top: 2rem;
 }

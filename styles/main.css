@@ -1,31 +1,31 @@
 @font-face {
     font-family: 'Rowdies';
-    src: url(/fonts/Rowdies-Regular.ttf) format('truetype');
+    src: url(../fonts/Rowdies-Regular.ttf) format('truetype');
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'Rowdies';
-    src: url(/fonts/Rowdies-Bold.ttf) format('truetype');
+    src: url(../fonts/Rowdies-Bold.ttf) format('truetype');
     font-weight: bold;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url(/fonts/Montserrat-Regular.ttf) format('truetype');
+    src: url(../fonts/Montserrat-Regular.ttf) format('truetype');
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url(/fonts/Montserrat-Italic.ttf) format('truetype');
+    src: url(../fonts/Montserrat-Italic.ttf) format('truetype');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url(/fonts/Montserrat-Bold.ttf) format('truetype');
+    src: url(../fonts/Montserrat-Bold.ttf) format('truetype');
     font-weight: Bold;
 }
 
@@ -97,7 +97,7 @@ body {
 }
 
 .pages {
-    min-height: 100%;
+    min-height: 100vh;
     width: 100%;
 }
 
@@ -170,6 +170,38 @@ body {
     font: 15px 'Montserrat', sans-serif;
     font-style: italic;
     padding-left: 3rem;
+}
+
+.left-side input:focus-visible {
+    outline: none;
+}
+
+.left-side .error {
+    border-color: #ac1533;
+}
+
+.left-side .validation-error {
+    margin-top: -30px;
+    font: 15px 'Montserrat', sans-serif;
+    height: 13px;
+    color: #ac1533;
+    text-align: left;
+    display: block;
+    position: absolute;
+}
+
+.left-side .second-error {
+    display: none;
+}
+
+
+.left-side .input-radio-error {
+    margin-top: 0.5rem;
+}
+
+.left-side .add-border {
+    border: 1px solid rgba(207, 37, 37, 0.3);
+    border-style: none none solid none;
 }
 
 .left-side footer {

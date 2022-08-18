@@ -1,5 +1,5 @@
 //@ts-check
-import pageTransitionAndNavigation from './index.js';
+import { pageTransitionAndNavigation } from './index.js';
 
 // Declare variables that will be frequently used
 

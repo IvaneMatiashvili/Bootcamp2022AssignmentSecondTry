@@ -2,12 +2,8 @@
     display: none;
 }
 
-.second-page .nav .first-circle {
-    opacity: 1;
-}
-
-.second-page .nav .second-circle {
-    opacity: 1;
+.second-page h1 {
+    width: 100%;
 }
 
 .second-page .experience-generator {
@@ -22,13 +18,14 @@
     padding-left: 4rem;
 }
 
-.second-page input:focus,input[type=text] {
+.second-page input:focus, input[type=text] {
     padding-left: 4rem;
 }
 
 .second-page input[type=text] {
     padding-left: 4rem;
 }
+
 .select-box {
     display: flex;
     padding: 0;
@@ -40,7 +37,7 @@
     font: 15px 'Montserrat', sans-serif;
     font-style: italic;
     padding-left: 3rem;
-    color: #080808;;
+    color: #080808;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -52,7 +49,7 @@
     padding-left: 4rem;
 }
 
-.select-box .arrow {
+.second-page .select-box .arrow {
     border: solid #FE3B1F;
     border-width: 0 4px 4px 0;
     display: inline-block;
@@ -62,10 +59,14 @@
     cursor: pointer;
 }
 
-.select-box .down {
+.second-page .select-box .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     cursor: pointer;
+}
+
+.second-page .skills-error {
+    padding-top: 0.5rem;
 }
 
 .second-page .add-skills {
@@ -136,4 +137,12 @@
 
 .second-page footer {
     margin-top: 15rem;
+}
+
+.second-page .nav .first-circle {
+    opacity: 1;
+}
+
+.second-page .nav .second-circle {
+    opacity: 1;
 }

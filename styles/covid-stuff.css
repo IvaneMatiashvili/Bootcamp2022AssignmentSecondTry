@@ -1,9 +1,9 @@
 .third-page {
-    display: none;
+    display: flex;
 }
 
 .third-page .right-side h2 {
-    left: 14%; 
+    left: 14%;
 }
 
 .third-page .form-control-inline {
@@ -48,11 +48,43 @@
     margin-top: 5rem;
 }
 
-.third-page input[type=date] {
-    text-align: right;
+.third-page input {
     font: 15px 'Montserrat', sans-serif;
     font-style: italic;
-    padding-left: 2rem;
+    padding-right: 9rem !important;
+    background: #FFFFFF url(../icons/calendar-icon.png);
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 96%;
+    cursor: pointer;
+}
+
+.third-page input[type=date] {
+    font: 15px 'Montserrat', sans-serif;
+    font-style: italic;
+    padding-left: 3rem !important;
+    padding-right: 1rem !important;
+    background: none !important;
+}
+
+.third-page .when {
+    display: none;
+}
+
+.third-page .valid-date {
+    display: none;
+}
+
+/*
+.third-page input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    height: inherit;
+    left: 42%;
+    width: 2rem;
 }
 
 .third-page input[type="date"]:before {
@@ -60,10 +92,8 @@
     margin: 0 1.5rem;
     color: #525557;
 }
+*/
 
-.first-page input[type="date"]:focus:before {
-    content: '' !important;
-}
 
 .third-page .nav .first-circle {
     opacity: 1;
