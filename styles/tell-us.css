@@ -1,5 +1,5 @@
 .fourth-page {
-    display: none;
+    display: flex;
 }
 
 .fourth-page .left-side main {
@@ -94,6 +94,11 @@
     padding-left: 2rem;
     padding-top: 2rem;
 }
+
+.fourth-page .speak-about-devtalks {
+    display: none;
+}
+
 
 .fourth-page .nav .first-circle {
     opacity: 1;

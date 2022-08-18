@@ -58,6 +58,43 @@ const textareaOnBlur = () => {
 textareaOnBlur();
 
 
+const tellUsPageLocalStorage = () => {
+
+    checkAnswersLocalStorage(devtalk, 'devtalk');
+
+    userMessageAboutDevtalks.addEventListener('input', () => {
+        localStorage.setItem("user-message-about-devtalk", `${userMessageAboutDevtalks.value.trim()}`);
+    });
+
+    userMessageAboutDevtalks.value = localStorage.getItem("user-message-about-devtalk");
+
+    tellUsSomething.addEventListener('input', () => {
+        localStorage.setItem("tell-us-something", `${tellUsSomething.value.trim()}`);
+    });
+
+    tellUsSomething.value = localStorage.getItem("tell-us-something");
+}
+
+const checkAnswersLocalStorage = (parentElement, name) => {
+
+    parentElement?.forEach(el => {
+        if (localStorage.getItem(name) && el.value.trim() === localStorage.getItem(name)) {
+            el.checked = true;
+        }
+        el.addEventListener('click', () => {
+            if (localStorage.getItem(name) && el.value.trim() === localStorage.getItem(name)) {
+                el.checked = true;
+            }
+            if (el.checked) {
+                localStorage.setItem(name, `${el.value.trim()}`);
+            }
+        });
+    });
+}
+
+tellUsPageLocalStorage();
+
+
 const tellUsPageValidator = () => {
     let devtalksIndex = 10;
     tellUsPageInputLabelValidator(devtalk, devtalksIndex, 'work-location', devtalksForm);
@@ -109,6 +146,8 @@ tellUsPageValidator();
 
 
 const tellUsPageCheckAnswers = () => {
+    let countLocalStorageInfo = 0;
+
     devtalk?.forEach(el => {
 
         let textarea = speakAboutDevtalks;
@@ -117,6 +156,7 @@ const tellUsPageCheckAnswers = () => {
         if (el.checked && el.value.trim() === 'YES') {
 
             textarea.style.display = 'block';
+            countLocalStorageInfo++;
 
             if (userMessageAboutDevtalks.value.trim().length < 1) {
                 textareaError.style.display = 'block';
@@ -130,7 +170,12 @@ const tellUsPageCheckAnswers = () => {
             })
 
         } else if (el.checked && el.value.trim() === 'NO') {
+            countLocalStorageInfo++;
 
+            textarea.style.display = 'none';
+            textareaError.style.display = 'none';
+
+        } else if (countLocalStorageInfo < 1) {
             textarea.style.display = 'none';
             textareaError.style.display = 'none';
         }
