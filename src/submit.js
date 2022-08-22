@@ -1,22 +1,38 @@
 //@ts-check
 import { pageReload, pageTransitionAndNavigation } from './index.js';
 
-/**
- * 
- * Declare variables that will be frequently used
- * 
- */
+// Declare variables that will be frequently used
 
+
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const startQuestionnairePage = document.querySelector('.start-page');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const submitPage = document.querySelector('.last-page');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const thanksPage = document.querySelector('.thanks');
 
+/**
+ * @type {object}
+ * @property {style}
+ */
 const submit = document.querySelector('.submit');
 
 
 /**
  * With this variable, we have access to the go-back button 
- * @type {HTMLElement}
+ * @type {object}
  * @property {style}
  */
 const goBackBtn = document.querySelector('.go-back-btn');

@@ -4,14 +4,45 @@ import { globalValidationCounter, pageReload, pageTransitionAndNavigation, valid
 // Declare variables that will be frequently used
 
 /**
- * @type {Element}
+ * @type {object}
+ * @property {style}
  */
 
 const experienceGenerator = document.querySelector('.experience-generator');
+
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const skillsMassage = document.querySelector('.skills-message');
+
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const skills = document.querySelector('.skills');
+
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const experience = document.querySelector('.experience');
+
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const addSkillsBtn = document.querySelector('.add-skills');
+
+/**
+ * 
+ * @type {Array}
+ * @property {style}
+ */
 let localStorageSelectArr = new Array();
 
 /**

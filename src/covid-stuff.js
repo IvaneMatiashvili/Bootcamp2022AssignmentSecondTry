@@ -1,25 +1,78 @@
 //@ts-check
 import { globalValidationCounter, pageReload, pageTransitionAndNavigation, validator } from './index.js';
 
+// Declare variables that will be frequently used
+
+
+
 /**
- * 
- * Declare variables that will be frequently used
- * 
+ * @type {object}
+ * @property {style}
  */
 
 const covidStuffPage = document.querySelector('.third-page');
+/**
+ * @type {object}
+ * @property {style}
+ */
 
 const questionsList = document.querySelector('.questions-list');
+/**
+ * @type {object}
+ * @property {style}
+ */
 
 const workLocationForm = document.querySelector('.work-location-form');
+
+/**
+ * 
+ * @type {NodeListOf<HTMLElement>}
+ * @property {style}
+ * 
+ */
+
 const workLocation = document.querySelectorAll('.work-location');
 
+/**
+ * @type {object}
+ * @property {style}
+ */
+
 const covidForm = document.querySelector('.covid-form');
+
+/**
+ * 
+ * @type {NodeListOf<HTMLElement>}
+ * @property {style}
+ * 
+ */
 const covid = document.querySelectorAll('.covid');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const covidDate = document.querySelector('.covid-date');
 
+/**
+ * @type {object}
+ * @property {style}
+ */
+
 const vaccinateForm = document.querySelector('.vaccinate-form');
+
+/**
+ * 
+ * @type {NodeListOf<HTMLElement>}
+ * @property {style}
+ * 
+ */
 const vaccinated = document.querySelectorAll('.vaccinated');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const vaccinatedDate = document.querySelector('.vaccinated-date')
 
 

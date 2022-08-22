@@ -1,18 +1,50 @@
 //@ts-check
 import { globalValidationCounter, pageReload, pageTransitionAndNavigation, validator } from './index.js';
 
-/**
- * 
- * Declare variables that will be frequently used
- * 
- */
+//Declare variables that will be frequently used
 
+
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const tellUsPage = document.querySelector('.fourth-page ');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const devtalksForm = document.querySelector('.devtalks-form');
+
+/**
+ * @type {NodeListOf<object>}
+ * @property {style}
+ */
 const devtalk = document.querySelectorAll('.devtalk');
+
+/**
+ * @type {NodeListOf<HTMLElement>}
+ * @property {style}
+ */
 const textareaBlur = document.querySelectorAll('.textarea-blur');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const speakAboutDevtalks = document.querySelector('.speak-about-devtalks');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const userMessageAboutDevtalks = document.querySelector('.user-message-about-devtalks');
+
+/**
+ * @type {object}
+ * @property {style}
+ */
 const tellUsSomething = document.querySelector('.tell-us-something');
 
 

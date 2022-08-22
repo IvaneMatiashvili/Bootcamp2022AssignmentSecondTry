@@ -42,7 +42,7 @@ const leftSide = document.querySelector('.left-side');
  * 
  * With this variable, we have access to the right side of every page that has a '.right-side' class.
  * 
- * @type {HTMLElement}
+ * @type {object}
  * @property {style}
  * 
  */
@@ -68,10 +68,39 @@ const nextArrowBtn = document.querySelectorAll('.go-next');
  */
 const goBackArrowBtn = document.querySelectorAll('.go-back');
 
+/**
+ * 
+ * @type {NodeListOf<HTMLElement>}
+ * @property {style}
+ * 
+ */
+
 const validationError = document.querySelectorAll('.validation-error');
+
+/**
+ * 
+ * @type {NodeListOf<HTMLElement>}
+ * @property {style}
+ * 
+ */
+
 const firstError = document.querySelectorAll('.first-error');
+
+/**
+ * 
+ * @type {NodeListOf<HTMLElement>}
+ * @property {style}
+ * 
+ */
+
 const secondError = document.querySelectorAll('.second-error');
 
+/**
+ * 
+ * @type {Array<number>}
+ * @property {style}
+ * 
+ */
 export const globalValidationCounter = new Array(4).fill(0);
 
 
@@ -110,7 +139,7 @@ export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => 
      * 
      * With this variable, we have access to an empty div element that has a '.transition' class.
      * 
-     * @type {HTMLElement}
+     * @type {object}
      * @property {style}
      * 
      */
@@ -120,7 +149,7 @@ export const pageTransitionAndNavigation = (currentPageInx, selectedPageInx) => 
      * 
      * With this variable, we have access to an empty div element that has a '.selected-page-transition' class.
      * 
-     * @type {HTMLElement}
+     * @type {object}
      * @property {style}
      * 
      */
@@ -349,10 +378,22 @@ export const validator = (textValue, element, idx, elementType) => {
 }
 
 
+/**
+ * 
+ * @param {string} email
+ * 
+ */
+
 const emailValidator = email => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+/**
+ * 
+ * @param {string} phone
+ * 
+ */
 
 const phoneValidator = (phone) => {
     if (phone.slice(0, 5) === "+9955" &&

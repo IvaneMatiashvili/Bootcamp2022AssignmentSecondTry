@@ -7,9 +7,32 @@ import { globalValidationCounter, pageReload, pageTransitionAndNavigation, valid
  * 
  */
 
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const firstName = document.querySelector('.first-name');
+
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const lastName = document.querySelector('.last-name');
+
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const email = document.querySelector('.email');
+
+/**
+ * 
+ * @type {object}
+ * @property {style}
+ */
 const phone = document.querySelector('.phone');
 
 /**

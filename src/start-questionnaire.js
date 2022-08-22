@@ -8,7 +8,7 @@ import { pageReload, pageTransitionAndNavigation } from './index.js';
  * 
  * With this variable, we have access to the start-questionnaire.
  * 
- * @type {HTMLElement}
+ * @type {object}
  * @property {style}
  * 
  */
@@ -50,4 +50,5 @@ startPageReload();
             localStorage.setItem('page-reload', `${selectedPageInx}`);
         })
     })(startBtn);
+
 
