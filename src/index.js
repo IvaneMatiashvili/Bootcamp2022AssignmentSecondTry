@@ -16,7 +16,6 @@
  */
 
 
-
 // Declare variables that will be frequently used
 
 /**
@@ -73,10 +72,28 @@ const validationError = document.querySelectorAll('.validation-error');
 const firstError = document.querySelectorAll('.first-error');
 const secondError = document.querySelectorAll('.second-error');
 
+export const globalValidationCounter = new Array(4).fill(0);
+
 
 // start adding features
 
 const { log: l } = console;
+
+export const pageReload = (pageIndex, displayValue) => {
+
+    if (localStorage.getItem('page-reload')) {
+
+        if (+localStorage.getItem('page-reload') === pageIndex) {
+            pages.forEach((el, idx) => {
+                if (pageIndex + 1 === idx) {
+                    el.style.display = displayValue;
+                } else {
+                    el.style.display = 'none';
+                }
+            })
+        }
+    }
+}
 
 
 /**
@@ -218,10 +235,18 @@ const addEventListenerForArrowButtons = (arrowBtn) => {
         el.addEventListener('click', () => {
             if (arrowBtn === nextArrowBtn) {
                 const [currentPageInx, selectedPageInx] = [inx, inx + 1];
-                pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+                if (globalValidationCounter[currentPageInx] === 1) {
+
+                    pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                    localStorage.setItem('page-reload', `${selectedPageInx}`);
+
+                }
             } else {
                 const [currentPageInx, selectedPageInx] = [inx, inx - 1];
                 pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                localStorage.setItem('page-reload', `${selectedPageInx}`);
 
             }
         });
@@ -253,6 +278,7 @@ export const validator = (textValue, element, idx, elementType) => {
                 secondError[idx].style.display = 'none';
 
                 element.classList.remove('error');
+                return true;
             }
             break;
 
@@ -272,6 +298,7 @@ export const validator = (textValue, element, idx, elementType) => {
                 secondError[idx].style.display = 'none';
 
                 element.classList.remove('error');
+                return true;
             }
             break;
 
@@ -291,6 +318,7 @@ export const validator = (textValue, element, idx, elementType) => {
                 secondError[idx].style.display = 'none';
 
                 element.classList.remove('error');
+                return true;
             }
 
             break;
@@ -304,6 +332,7 @@ export const validator = (textValue, element, idx, elementType) => {
             } else {
                 firstError[idx].style.display = 'none';
                 element.classList.remove('error');
+                return true;
             }
             break;
 
@@ -314,6 +343,7 @@ export const validator = (textValue, element, idx, elementType) => {
             } else {
                 firstError[idx].style.display = 'none';
                 element.classList.remove('error');
+                return true;
             }
     }
 }

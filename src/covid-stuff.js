@@ -1,11 +1,13 @@
 //@ts-check
-import { pageTransitionAndNavigation, validator } from './index.js';
+import { globalValidationCounter, pageReload, pageTransitionAndNavigation, validator } from './index.js';
 
 /**
  * 
  * Declare variables that will be frequently used
  * 
  */
+
+const covidStuffPage = document.querySelector('.third-page');
 
 const questionsList = document.querySelector('.questions-list');
 
@@ -41,6 +43,13 @@ const currentPageInx = 2;
  */
 
 const { log: l } = console;
+
+const covidStuffPageReload = () => {
+    if (+localStorage.getItem('page-reload') === currentPageInx) {
+        pageReload(currentPageInx, 'flex');
+    }
+}
+covidStuffPageReload();
 
 
 const covidStuffPageLocalStorage = () => {
@@ -85,6 +94,8 @@ const checkAnswersLocalStorage = (parentElement, name) => {
 covidStuffPageLocalStorage();
 
 
+const covidStuffPageValidationCounter = new Array(5).fill(0);
+
 const covidPageValidator = () => {
     let workLocationIndex = 5;
     covidPageInputLabelValidator(workLocation, questionsList, workLocationIndex, 'work-location', workLocationForm);
@@ -106,11 +117,17 @@ const covidPageValidator = () => {
     let vaccinatedDateValue = '';
 
     dateValidator(vaccinatedDate, vaccinatedDateIndex, vaccinatedDateValue, 'date');
+
+
+    checkValidationCounterArrSum();
 }
+
 
 const covidPageInputLabelValidator = (element, elementList, index, elementType, elementForm) => {
     let clickCounter = 0;
     let elementValue = '';
+
+
 
     element.forEach(el => {
 
@@ -119,12 +136,57 @@ const covidPageInputLabelValidator = (element, elementList, index, elementType, 
             elementValue = el?.value.trim();
             validator(elementValue, elementList, index, elementType);
             clickCounter > 0 ? elementForm.classList.remove('add-border') : elementForm.classList.add('add-border');
+
+            if (validator(elementValue, elementList, index, elementType) === true) {
+
+                covidStuffPageValidationCounter[index - 5] = 1;
+                checkValidationCounterArrSum();
+
+            } else {
+
+                covidStuffPageValidationCounter[index - 5] = 0;
+                checkValidationCounterArrSum();
+            }
+
+            if (el.value === 'NO') {
+                covidStuffPageValidationCounter[index - 5 + 1] = 1;
+                checkValidationCounterArrSum();
+            } else {
+                covidStuffPageValidationCounter[index - 5 + 1] = 0;
+                checkValidationCounterArrSum();
+
+            }
+
         } else {
             el.addEventListener('click', () => {
                 clickCounter++;
                 elementValue = el?.value.trim();
                 validator(elementValue, elementList, index, elementType);
                 clickCounter > 0 ? elementForm.classList.remove('add-border') : elementForm.classList.add('add-border');
+
+                if (validator(elementValue, elementList, index, elementType) === true) {
+
+                    covidStuffPageValidationCounter[index - 5] = 1;
+                    checkValidationCounterArrSum();
+
+
+                } else {
+
+                    covidStuffPageValidationCounter[index - 5] = 0;
+                    checkValidationCounterArrSum();
+
+                }
+
+
+                if (el.value === 'NO') {
+                    covidStuffPageValidationCounter[index - 5 + 1] = 1;
+                    checkValidationCounterArrSum();
+                } else {
+                    covidStuffPageValidationCounter[index - 5 + 1] = 0;
+                    checkValidationCounterArrSum();
+
+                }
+
             })
         }
     })
@@ -136,12 +198,67 @@ const dateValidator = (element, elementIndex, elementValue, elementType) => {
     if (element?.value.trim() !== '') {
         elementValue = element.value.trim();
         validator(elementValue, element, elementIndex, elementType);
+
+        if (validator(elementValue, element, elementIndex, elementType) === true) {
+
+            covidStuffPageValidationCounter[elementIndex - 5] = 1;
+            checkValidationCounterArrSum();
+
+        } else {
+
+            covidStuffPageValidationCounter[elementIndex - 5] = 0;
+            checkValidationCounterArrSum();
+
+        }
     } else {
+
         element?.addEventListener('input', () => {
             elementValue = element.value.trim();
             validator(elementValue, element, elementIndex, elementType);
+
+            if (validator(elementValue, element, elementIndex, elementType) === true) {
+
+                covidStuffPageValidationCounter[elementIndex - 5] = 1;
+                checkValidationCounterArrSum();
+
+            } else {
+
+                covidStuffPageValidationCounter[elementIndex - 5] = 0;
+                checkValidationCounterArrSum();
+
+            }
         })
     }
+
+    element?.addEventListener('input', () => {
+        elementValue = element.value.trim();
+        validator(elementValue, element, elementIndex, elementType);
+
+        if (validator(elementValue, element, elementIndex, elementType) === true) {
+
+            covidStuffPageValidationCounter[elementIndex - 5] = 1;
+            checkValidationCounterArrSum();
+
+        } else {
+
+            covidStuffPageValidationCounter[elementIndex - 5] = 0;
+            checkValidationCounterArrSum();
+
+        }
+    })
+
+}
+
+const checkValidationCounterArrSum = () => {
+    if (covidStuffPageValidationCounter.reduce((a, b) => a + b, 0) === 5) {
+        globalValidationCounter[2] = 1;
+
+    } else {
+
+        globalValidationCounter[2] = 0;
+
+    }
+
 }
 
 const covidPageCheckAnswers = (element, elementForm) => {
@@ -199,6 +316,8 @@ const covidPageCheckAnswers = (element, elementForm) => {
 
 covidPageValidator();
 
+
+
 (/**
  * This "IIFE" function adds a `'click' event listener` to a third page navigation buttons and
  * executes a 'pageTransitionAndNavigation' function for each third page navigation buttons 
@@ -209,7 +328,28 @@ covidPageValidator();
             if (inx !== currentPageInx) {
                 el.addEventListener('click', () => {
                     const selectedPageInx = inx;
-                    pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                    if (inx > currentPageInx) {
+                        let sum = 0;
+
+                        globalValidationCounter.forEach((elm, idx) => {
+                            if (idx < selectedPageInx) {
+                                sum += elm;
+                            }
+                        })
+
+                        if (sum === selectedPageInx) {
+
+                            pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                            localStorage.setItem('page-reload', `${selectedPageInx}`);
+                        }
+                    } else {
+
+                        pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                        localStorage.setItem('page-reload', `${selectedPageInx}`);
+                    }
                 });
             }
         })

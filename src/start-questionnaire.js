@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation } from './index.js';
+import { pageReload, pageTransitionAndNavigation } from './index.js';
 
 // Declare variables that will be frequently used
 
@@ -28,6 +28,13 @@ const [currentPageInx, selectedPageInx] = [-1, 0];
 
 const { log: l } = console;
 
+const startPageReload = () => {
+    if (+localStorage.getItem('page-reload') === currentPageInx) {
+        pageReload(currentPageInx, 'block');
+    }
+}
+startPageReload();
+
 (/**
  *
  * This "IIFE" function adds a `'click' event listener` to a start-questionnaire' button and
@@ -39,6 +46,8 @@ const { log: l } = console;
     function addStartBtnClickEventListener(btn) {
         btn.addEventListener('click', () => {
             pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+            localStorage.setItem('page-reload', `${selectedPageInx}`);
         })
     })(startBtn);
 

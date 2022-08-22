@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation, validator } from './index.js';
+import { globalValidationCounter, pageReload, pageTransitionAndNavigation, validator } from './index.js';
 
 /**
  * 
@@ -36,6 +36,13 @@ const currentPageInx = 0;
 
 const { log: l } = console;
 
+const coordinatesPageReload = () => {
+    if (+localStorage.getItem('page-reload') === currentPageInx) {
+        pageReload(currentPageInx, 'flex');
+    }
+}
+coordinatesPageReload();
+
 
 const coordinatesPageLocalStorage = () => {
 
@@ -70,6 +77,7 @@ const coordinatesPageLocalStorage = () => {
 
 coordinatesPageLocalStorage();
 
+const coordinatesPageValidationCounter = new Array(4).fill(0);
 
 const coordinatesPageValidator = () => {
 
@@ -78,9 +86,24 @@ const coordinatesPageValidator = () => {
 
     validator(firstNameValue, firstName, firstNameIndex, 'name');
 
+    if (validator(firstNameValue, firstName, firstNameIndex, 'name') === true) {
+        coordinatesPageValidationCounter[0] = 1;
+    } else {
+        coordinatesPageValidationCounter[0] = 0;
+    }
+
     firstName.addEventListener('input', () => {
         firstNameValue = firstName.value.trim();
         validator(firstNameValue, firstName, firstNameIndex, 'name');
+
+        if (validator(firstNameValue, firstName, firstNameIndex, 'name') === true) {
+            coordinatesPageValidationCounter[0] = 1;
+        } else {
+
+            coordinatesPageValidationCounter[0] = 0;
+        }
+
+        checkValidationCounterArrSum();
     });
 
     let lastNameValue = lastName.value.trim()
@@ -88,9 +111,24 @@ const coordinatesPageValidator = () => {
 
     validator(lastNameValue, lastName, lastNameIndex, 'name');
 
+    if (validator(lastNameValue, lastName, lastNameIndex, 'name') === true) {
+        coordinatesPageValidationCounter[1] = 1;
+    } else {
+        coordinatesPageValidationCounter[1] = 0;
+    }
+
     lastName.addEventListener('input', () => {
         lastNameValue = lastName.value.trim()
         validator(lastNameValue, lastName, lastNameIndex, 'name');
+
+        if (validator(lastNameValue, lastName, lastNameIndex, 'name') === true) {
+            coordinatesPageValidationCounter[1] = 1;
+
+        } else {
+            coordinatesPageValidationCounter[1] = 0;
+        }
+
+        checkValidationCounterArrSum()
     });
 
     let emailValue = email.value.trim()
@@ -98,9 +136,23 @@ const coordinatesPageValidator = () => {
 
     validator(emailValue, email, emailIndex, 'email');
 
+    if (validator(emailValue, email, emailIndex, 'email') === true) {
+        coordinatesPageValidationCounter[2] = 1;
+    } else {
+        coordinatesPageValidationCounter[2] = 0;
+    }
+
     email.addEventListener('input', () => {
         emailValue = email.value.trim()
         validator(emailValue, email, emailIndex, 'email');
+
+        if (validator(emailValue, email, emailIndex, 'email') === true) {
+            coordinatesPageValidationCounter[2] = 1;
+        } else {
+            coordinatesPageValidationCounter[2] = 0;
+        }
+
+        checkValidationCounterArrSum()
     });
 
     let phoneValue = phone.value.trim()
@@ -108,14 +160,39 @@ const coordinatesPageValidator = () => {
 
     validator(phoneValue, phone, phoneIndex, 'phone');
 
+    if (validator(phoneValue, phone, phoneIndex, 'phone') === true) {
+        coordinatesPageValidationCounter[3] = 1;
+    } else {
+        coordinatesPageValidationCounter[3] = 0;
+    }
+
     phone.addEventListener('input', () => {
         let phoneValue = phone.value.trim()
         let index = 3;
         validator(phoneValue, phone, phoneIndex, 'phone');
-    });
-}
-coordinatesPageValidator();
 
+        if (validator(phoneValue, phone, phoneIndex, 'phone') === true) {
+            coordinatesPageValidationCounter[3] = 1;
+        } else {
+            coordinatesPageValidationCounter[3] = 0;
+        }
+
+        checkValidationCounterArrSum();
+    });
+
+    checkValidationCounterArrSum();
+}
+
+const checkValidationCounterArrSum = () => {
+    if (coordinatesPageValidationCounter.reduce((a, b) => a + b, 0) === 4) {
+        globalValidationCounter[0] = 1;
+    } else {
+        globalValidationCounter[0] = 0;
+    }
+
+}
+
+coordinatesPageValidator();
 
 
 (/**
@@ -124,11 +201,25 @@ coordinatesPageValidator();
  * @param {NodeListOf<Element>} btn
  */
     function addFirstPageNavBtnClickEventListener(btn) {
+
         btn.forEach((el, inx) => {
             if (inx > currentPageInx) {
                 el.addEventListener('click', () => {
+                    let sum = 0;
                     const selectedPageInx = inx;
-                    pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                    globalValidationCounter.forEach((elm, idx) => {
+                        if (idx < selectedPageInx) {
+                            sum += elm;
+                        }
+                    })
+
+                    if (sum === selectedPageInx) {
+
+                        pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                        localStorage.setItem('page-reload', `${selectedPageInx}`);
+                    }
                 });
             }
         })

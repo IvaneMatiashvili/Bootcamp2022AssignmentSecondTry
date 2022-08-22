@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation, validator } from './index.js';
+import { globalValidationCounter, pageReload, pageTransitionAndNavigation, validator } from './index.js';
 
 // Declare variables that will be frequently used
 
@@ -36,25 +36,13 @@ const currentPageInx = 1;
 
 const { log: l } = console;
 
+const skillsPageReload = () => {
+    if (+localStorage.getItem('page-reload') === currentPageInx) {
+        pageReload(currentPageInx, 'flex');
+    }
+}
+skillsPageReload();
 
-(/**
- *
- * This "IIFE" function adds a `'click' event listener` to a second page navigation buttons and
- * executes a 'pageTransitionAndNavigation' function for each second page navigation buttons.
- *  
- * @param {NodeListOf<Element>} btn
- * 
- */
-    function addSecondPageNavBtnClickEventListener(btn) {
-        btn.forEach((el, inx) => {
-            if (inx !== currentPageInx) {
-                el.addEventListener('click', () => {
-                    const selectedPageInx = inx;
-                    pageTransitionAndNavigation(currentPageInx, selectedPageInx);
-                });
-            }
-        })
-    })(secondPageNavBtn);
 
 /**
  * @type{Array<{ id: number, title: string }> }
@@ -193,6 +181,12 @@ const skillsPageValidator = () => {
     let index = 4;
     validator(skillsValue, skills, index, 'skill');
     validator(skillsValue, experience, index, 'experience');
+
+    if (validator(skillsValue, skills, index, 'skill') === true) {
+        globalValidationCounter[1] = 1;
+    } else {
+        globalValidationCounter[1] = 0;
+    }
 }
 
 skillsPageValidator();
@@ -210,3 +204,46 @@ getLocalStorageSelect?.forEach(el => {
 })
 
 addSkillsBtn.addEventListener('click', addSkills);
+
+
+
+(/**
+ *
+ * This "IIFE" function adds a `'click' event listener` to a second page navigation buttons and
+ * executes a 'pageTransitionAndNavigation' function for each second page navigation buttons.
+ *  
+ * @param {NodeListOf<Element>} btn
+ * 
+ */
+    function addSecondPageNavBtnClickEventListener(btn) {
+        btn.forEach((el, inx) => {
+            if (inx !== currentPageInx) {
+                el.addEventListener('click', () => {
+
+                    const selectedPageInx = inx;
+
+                    if (inx > currentPageInx) {
+                        let sum = 0;
+
+                        globalValidationCounter.forEach((elm, idx) => {
+                            if (idx < selectedPageInx) {
+                                sum += elm;
+                            }
+                        })
+
+                        if (sum === selectedPageInx) {
+
+                            pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                            localStorage.setItem('page-reload', `${selectedPageInx}`);
+                        }
+                    } else {
+
+                        pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                        localStorage.setItem('page-reload', `${selectedPageInx}`);
+                    }
+                });
+            }
+        })
+    })(secondPageNavBtn);

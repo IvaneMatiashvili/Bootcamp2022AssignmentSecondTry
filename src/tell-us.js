@@ -1,5 +1,5 @@
 //@ts-check
-import { pageTransitionAndNavigation, validator } from './index.js';
+import { globalValidationCounter, pageReload, pageTransitionAndNavigation, validator } from './index.js';
 
 /**
  * 
@@ -7,7 +7,7 @@ import { pageTransitionAndNavigation, validator } from './index.js';
  * 
  */
 
-
+const tellUsPage = document.querySelector('.fourth-page ');
 const devtalksForm = document.querySelector('.devtalks-form');
 const devtalk = document.querySelectorAll('.devtalk');
 const textareaBlur = document.querySelectorAll('.textarea-blur');
@@ -36,6 +36,14 @@ const currentPageInx = 3;
  */
 
 const { log: l } = console;
+
+
+const tellUsPageReload = () => {
+    if (+localStorage.getItem('page-reload') === currentPageInx) {
+        pageReload(currentPageInx, 'flex');
+    }
+}
+tellUsPageReload();
 
 
 const textareaOnBlur = () => {
@@ -95,6 +103,9 @@ const checkAnswersLocalStorage = (parentElement, name) => {
 tellUsPageLocalStorage();
 
 
+const tellUsPageValidationCounter = new Array(3).fill(0);
+
+
 const tellUsPageValidator = () => {
     let devtalksIndex = 10;
     tellUsPageInputLabelValidator(devtalk, devtalksIndex, 'work-location', devtalksForm);
@@ -121,12 +132,57 @@ const tellUsPageInputLabelValidator = (element, index, elementType, elementForm)
             elementValue = el?.value.trim();
             validator(elementValue, elementForm, index, elementType);
             clickCounter > 0 ? elementForm.classList.remove('add-border') : elementForm.classList.add('add-border');
+
+
+            if (validator(elementValue, elementForm, index, elementType) === true) {
+                tellUsPageValidationCounter[index - 10] = 1;
+                checkValidationCounterArrSum();
+            } else {
+                tellUsPageValidationCounter[index - 10] = 0;
+                checkValidationCounterArrSum();
+            }
+
+            if (el.value === 'NO') {
+
+                tellUsPageValidationCounter[index - 10 + 1] = 1;
+                checkValidationCounterArrSum();
+
+            } else {
+
+                tellUsPageValidationCounter[index - 10 + 1] = 0;
+                checkValidationCounterArrSum();
+
+            }
+
+
         } else {
             el.addEventListener('click', () => {
                 clickCounter++;
                 elementValue = el?.value.trim();
                 validator(elementValue, elementForm, index, elementType);
                 clickCounter > 0 ? elementForm.classList.remove('add-border') : elementForm.classList.add('add-border');
+
+
+                if (validator(elementValue, elementForm, index, elementType) === true) {
+                    tellUsPageValidationCounter[index - 10] = 1;
+                    checkValidationCounterArrSum();
+                } else {
+                    tellUsPageValidationCounter[index - 10] = 0;
+                    checkValidationCounterArrSum();
+                }
+
+                if (el.value === 'NO') {
+
+                    tellUsPageValidationCounter[index - 10 + 1] = 1;
+                    checkValidationCounterArrSum();
+
+                } else {
+
+                    tellUsPageValidationCounter[index - 10 + 1] = 0;
+                    checkValidationCounterArrSum();
+
+                }
+
             })
         }
     })
@@ -139,11 +195,41 @@ const textAreaValidator = (element, elementIndex, elementValue) => {
     element?.addEventListener('input', () => {
         elementValue = element.value.trim();
         validator(elementValue, element, elementIndex, 'textarea');
+
+        if (validator(elementValue, element, elementIndex, 'textarea') === true) {
+            tellUsPageValidationCounter[elementIndex - 10] = 1;
+            checkValidationCounterArrSum();
+        } else {
+            tellUsPageValidationCounter[elementIndex - 10] = 0;
+            checkValidationCounterArrSum();
+        }
     })
+
+    if (validator(elementValue, element, elementIndex, 'textarea') === true) {
+        tellUsPageValidationCounter[elementIndex - 10] = 1;
+        checkValidationCounterArrSum();
+    }
+
+    if (validator(elementValue, element, elementIndex, 'textarea') !== true) {
+        tellUsPageValidationCounter[elementIndex - 10] = 0;
+        checkValidationCounterArrSum();
+    }
+
+}
+
+
+const checkValidationCounterArrSum = () => {
+    if (tellUsPageValidationCounter.reduce((a, b) => a + b, 0) === 3) {
+        globalValidationCounter[3] = 1;
+
+    } else {
+
+        globalValidationCounter[3] = 0;
+
+    }
 }
 
 tellUsPageValidator();
-
 
 const tellUsPageCheckAnswers = () => {
     let countLocalStorageInfo = 0;
@@ -216,7 +302,28 @@ tellUsPageCheckAnswers();
             if (inx !== currentPageInx) {
                 el.addEventListener('click', () => {
                     const selectedPageInx = inx;
-                    pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                    if (inx > currentPageInx) {
+                        let sum = 0;
+
+                        globalValidationCounter.forEach((elm, idx) => {
+                            if (idx < selectedPageInx) {
+                                sum += elm;
+                            }
+                        })
+
+                        if (sum === selectedPageInx) {
+
+                            pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                            localStorage.setItem('page-reload', `${selectedPageInx}`);
+                        }
+                    } else {
+
+                        pageTransitionAndNavigation(currentPageInx, selectedPageInx);
+
+                        localStorage.setItem('page-reload', `${selectedPageInx}`);
+                    }
                 });
             }
         })
